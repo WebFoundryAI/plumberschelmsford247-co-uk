@@ -2,7 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { SchemaScript } from "@/components/seo/SchemaScript";
 import { BRAND } from "@/config/brand";
-import { generateWebPageSchema } from "@/lib/schema";
+import { generateWebPageSchema, generateBreadcrumbSchema } from "@/lib/schema";
 
 const Cookies = () => {
   return (
@@ -15,11 +15,17 @@ const Cookies = () => {
         }}
       />
       <SchemaScript
-        schema={generateWebPageSchema(
-          `Cookie Policy | ${BRAND.brandName}`,
-          `Cookie policy for ${BRAND.brandName}. Learn about the cookies we use on our website.`,
-          "/cookies"
-        )}
+        schema={[
+          generateWebPageSchema(
+            `Cookie Policy | ${BRAND.brandName}`,
+            `Cookie policy for ${BRAND.brandName}. Learn about the cookies we use on our website.`,
+            "/cookies"
+          ),
+          generateBreadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Cookie Policy", url: "/cookies" },
+          ]),
+        ]}
       />
 
       <section className="section-padding">

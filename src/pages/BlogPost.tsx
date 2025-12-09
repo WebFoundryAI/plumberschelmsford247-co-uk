@@ -6,7 +6,7 @@ import { SchemaScript } from "@/components/seo/SchemaScript";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Breadcrumbs } from "@/components/nav/Breadcrumbs";
 import { BRAND } from "@/config/brand";
-import { generateBlogPostSchema } from "@/lib/schema";
+import { generateBlogPostSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft } from "lucide-react";
@@ -108,12 +108,19 @@ const BlogPost = () => {
         }}
       />
       <SchemaScript
-        schema={generateBlogPostSchema(
-          post.title,
-          post.excerpt,
-          post.slug,
-          post.created_at
-        )}
+        schema={[
+          generateBlogPostSchema(
+            post.title,
+            post.excerpt,
+            post.slug,
+            post.created_at
+          ),
+          generateBreadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Blog", url: "/blog" },
+            { name: post.title, url: `/blog/${post.slug}` },
+          ]),
+        ]}
       />
 
       <section className="hero-section">

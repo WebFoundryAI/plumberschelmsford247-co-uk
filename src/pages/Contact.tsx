@@ -4,14 +4,21 @@ import { SEOHead } from "@/components/seo/SEOHead";
 import { SchemaScript } from "@/components/seo/SchemaScript";
 import { BRAND } from "@/config/brand";
 import { getContactSEO } from "@/config/seo";
-import { generateContactPageSchema, generateLocalBusinessSchema } from "@/lib/schema";
+import { generateContactPageSchema, generateLocalBusinessSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 const Contact = () => {
   return (
     <Layout>
       <SEOHead metadata={getContactSEO()} />
-      <SchemaScript schema={[generateContactPageSchema(), generateLocalBusinessSchema()]} />
+      <SchemaScript schema={[
+        generateContactPageSchema(),
+        generateLocalBusinessSchema(),
+        generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Contact", url: "/contact" },
+        ]),
+      ]} />
       <section className="hero-section">
         <div className="hero-overlay py-16 md:py-20">
           <div className="container-wide px-4 text-center text-primary-foreground">

@@ -4,14 +4,20 @@ import { SEOHead } from "@/components/seo/SEOHead";
 import { SchemaScript } from "@/components/seo/SchemaScript";
 import { BRAND } from "@/config/brand";
 import { getAboutSEO } from "@/config/seo";
-import { generateOrganizationSchema } from "@/lib/schema";
+import { generateOrganizationSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { CheckCircle2, Users, Clock, Shield } from "lucide-react";
 
 const About = () => {
   return (
     <Layout>
       <SEOHead metadata={getAboutSEO()} />
-      <SchemaScript schema={generateOrganizationSchema()} />
+      <SchemaScript schema={[
+        generateOrganizationSchema(),
+        generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "About", url: "/about" },
+        ]),
+      ]} />
       <section className="hero-section">
         <div className="hero-overlay py-16 md:py-20">
           <div className="container-wide px-4 text-center text-primary-foreground">

@@ -6,14 +6,21 @@ import { SchemaScript } from "@/components/seo/SchemaScript";
 import { BRAND } from "@/config/brand";
 import { LOCATIONS } from "@/config/locations";
 import { getLocationsSEO } from "@/config/seo";
-import { generateLocalBusinessSchema, generateLocationsListSchema } from "@/lib/schema";
+import { generateLocalBusinessSchema, generateLocationsListSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { Link } from "react-router-dom";
 
 const Locations = () => {
   return (
     <Layout>
       <SEOHead metadata={getLocationsSEO()} />
-      <SchemaScript schema={[generateLocalBusinessSchema(), generateLocationsListSchema(LOCATIONS)]} />
+      <SchemaScript schema={[
+        generateLocalBusinessSchema(),
+        generateLocationsListSchema(LOCATIONS),
+        generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Areas", url: "/locations" },
+        ]),
+      ]} />
 
       <section className="hero-section">
         <div className="hero-overlay py-16 md:py-20">

@@ -8,13 +8,20 @@ import { BRAND } from "@/config/brand";
 import { PRIMARY_LOCATION } from "@/config/locations";
 import { SERVICES } from "@/config/services";
 import { getServicesSEO } from "@/config/seo";
-import { generateLocalBusinessSchema, generateServicesListSchema } from "@/lib/schema";
+import { generateLocalBusinessSchema, generateServicesListSchema, generateBreadcrumbSchema } from "@/lib/schema";
 
 const Services = () => {
   return (
     <Layout>
       <SEOHead metadata={getServicesSEO()} />
-      <SchemaScript schema={[generateLocalBusinessSchema(), generateServicesListSchema(SERVICES)]} />
+      <SchemaScript schema={[
+        generateLocalBusinessSchema(),
+        generateServicesListSchema(SERVICES),
+        generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+        ]),
+      ]} />
 
       <section className="hero-section">
         <div className="hero-overlay py-16 md:py-20">

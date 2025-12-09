@@ -6,6 +6,7 @@ import { SchemaScript } from "@/components/seo/SchemaScript";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getBlogSEO } from "@/config/seo";
 import { BRAND } from "@/config/brand";
+import { generateBreadcrumbSchema } from "@/lib/schema";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight } from "lucide-react";
@@ -47,7 +48,13 @@ const Blog = () => {
   return (
     <Layout>
       <SEOHead metadata={getBlogSEO()} />
-      <SchemaScript schema={blogSchema} />
+      <SchemaScript schema={[
+        blogSchema,
+        generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Blog", url: "/blog" },
+        ]),
+      ]} />
 
       <section className="hero-section">
         <div className="hero-overlay py-16 md:py-20">

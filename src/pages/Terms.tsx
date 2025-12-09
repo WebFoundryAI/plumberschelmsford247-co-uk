@@ -2,7 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { SchemaScript } from "@/components/seo/SchemaScript";
 import { BRAND } from "@/config/brand";
-import { generateWebPageSchema } from "@/lib/schema";
+import { generateWebPageSchema, generateBreadcrumbSchema } from "@/lib/schema";
 
 const Terms = () => {
   return (
@@ -15,11 +15,17 @@ const Terms = () => {
         }}
       />
       <SchemaScript
-        schema={generateWebPageSchema(
-          `Terms of Service | ${BRAND.brandName}`,
-          `Terms and conditions for using ${BRAND.brandName} drainage services.`,
-          "/terms"
-        )}
+        schema={[
+          generateWebPageSchema(
+            `Terms of Service | ${BRAND.brandName}`,
+            `Terms and conditions for using ${BRAND.brandName} drainage services.`,
+            "/terms"
+          ),
+          generateBreadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Terms of Service", url: "/terms" },
+          ]),
+        ]}
       />
 
       <section className="section-padding">

@@ -4,13 +4,19 @@ import { CTASection } from "@/components/sections/CTASection";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { SchemaScript } from "@/components/seo/SchemaScript";
 import { getFAQSEO } from "@/config/seo";
-import { generateFAQSchema } from "@/lib/schema";
+import { generateFAQSchema, generateBreadcrumbSchema } from "@/lib/schema";
 
 const FAQ = () => {
   return (
     <Layout>
       <SEOHead metadata={getFAQSEO()} />
-      <SchemaScript schema={generateFAQSchema(faqs)} />
+      <SchemaScript schema={[
+        generateFAQSchema(faqs),
+        generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "FAQ", url: "/faq" },
+        ]),
+      ]} />
       <section className="hero-section">
         <div className="hero-overlay py-16 md:py-20">
           <div className="container-wide px-4 text-center text-primary-foreground">

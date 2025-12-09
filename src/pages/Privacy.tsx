@@ -2,7 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { SchemaScript } from "@/components/seo/SchemaScript";
 import { BRAND } from "@/config/brand";
-import { generateWebPageSchema } from "@/lib/schema";
+import { generateWebPageSchema, generateBreadcrumbSchema } from "@/lib/schema";
 
 const Privacy = () => {
   return (
@@ -15,11 +15,17 @@ const Privacy = () => {
         }}
       />
       <SchemaScript
-        schema={generateWebPageSchema(
-          `Privacy Policy | ${BRAND.brandName}`,
-          `Privacy policy for ${BRAND.brandName}. Learn how we collect, use, and protect your personal information.`,
-          "/privacy"
-        )}
+        schema={[
+          generateWebPageSchema(
+            `Privacy Policy | ${BRAND.brandName}`,
+            `Privacy policy for ${BRAND.brandName}. Learn how we collect, use, and protect your personal information.`,
+            "/privacy"
+          ),
+          generateBreadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Privacy Policy", url: "/privacy" },
+          ]),
+        ]}
       />
 
       <section className="section-padding">
