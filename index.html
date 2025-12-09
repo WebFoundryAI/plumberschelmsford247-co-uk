@@ -14,6 +14,81 @@
     
     <!-- Google Fonts - non-blocking -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- Critical CSS - inlined for FCP -->
+    <style>
+      /* Base reset and layout */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { -webkit-text-size-adjust: 100%; }
+      body { 
+        font-family: 'Outfit', system-ui, sans-serif; 
+        background: hsl(210 20% 98%); 
+        color: hsl(215 25% 15%);
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.5;
+      }
+      
+      /* Layout utilities */
+      .min-h-screen { min-height: 100vh; }
+      .flex { display: flex; }
+      .flex-col { flex-direction: column; }
+      .flex-1 { flex: 1 1 0%; }
+      .items-center { align-items: center; }
+      .justify-between { justify-content: space-between; }
+      .justify-center { justify-content: center; }
+      .gap-2 { gap: 0.5rem; }
+      .gap-3 { gap: 0.75rem; }
+      .w-full { width: 100%; }
+      .h-16 { height: 4rem; }
+      .px-4 { padding-left: 1rem; padding-right: 1rem; }
+      .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+      .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+      .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+      .text-sm { font-size: 0.875rem; }
+      .text-xl { font-size: 1.25rem; }
+      .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+      .font-bold { font-weight: 700; }
+      .font-medium { font-weight: 500; }
+      
+      /* Header critical styles */
+      .sticky { position: sticky; }
+      .top-0 { top: 0; }
+      .z-50 { z-index: 50; }
+      .bg-primary { background: hsl(213 80% 35%); }
+      .text-primary-foreground { color: hsl(0 0% 100%); }
+      .bg-card { background: hsl(0 0% 100%); }
+      .border-b { border-bottom-width: 1px; }
+      .border-border { border-color: hsl(214 20% 88%); }
+      
+      /* Hero critical styles */
+      .hero-section { background: linear-gradient(135deg, hsl(213 80% 30%) 0%, hsl(213 75% 20%) 100%); }
+      .hero-overlay { background: linear-gradient(180deg, hsla(213 80% 15% / 0.9) 0%, hsla(213 80% 20% / 0.85) 100%); }
+      .container-wide { max-width: 80rem; margin-left: auto; margin-right: auto; }
+      .overflow-hidden { overflow: hidden; }
+      .relative { position: relative; }
+      
+      /* Responsive */
+      @media (min-width: 768px) {
+        .md\\:py-24 { padding-top: 6rem; padding-bottom: 6rem; }
+        .md\\:text-5xl { font-size: 3rem; line-height: 1; }
+      }
+      @media (min-width: 1024px) {
+        .lg\\:text-6xl { font-size: 3.75rem; line-height: 1; }
+        .lg\\:hidden { display: none; }
+        .lg\\:flex { display: flex; }
+        .lg\\:pb-0 { padding-bottom: 0; }
+      }
+      
+      /* Loading state */
+      #root:empty::after {
+        content: '';
+        display: block;
+        width: 100%;
+        min-height: 100vh;
+        background: hsl(210 20% 98%);
+      }
+    </style>
+    
     <title>Blocked Drains Swindon | Expert Blocked Drain Services in Swindon</title>
     <meta name="description" content="Professional drain unblocking and CCTV surveys in Swindon and surrounding areas. 24/7 emergency service, no call-out fee, fixed pricing. Call 01793487489" />
     <meta name="author" content="Blocked Drains Swindon" />
