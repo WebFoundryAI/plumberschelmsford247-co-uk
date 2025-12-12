@@ -1,9 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
+import { SchemaScript } from "@/components/seo/SchemaScript";
 import { BRAND } from "@/config/brand";
 import { SERVICES } from "@/config/services";
 import { LOCATIONS } from "@/config/locations";
+import { generateBreadcrumbSchema, generateWebPageSchema } from "@/lib/schema";
 
 interface BlogPost {
   slug: string;
@@ -95,7 +98,7 @@ const Sitemap = () => {
     blogPages.length;
 
   return (
-    <>
+    <Layout>
       <SEOHead
         metadata={{
           title: `Sitemap | ${BRAND.brandName}`,
@@ -103,7 +106,20 @@ const Sitemap = () => {
           canonicalUrl: "/sitemap",
         }}
       />
-      <div className="min-h-screen bg-background py-16">
+      <SchemaScript
+        schema={[
+          generateWebPageSchema(
+            `Sitemap | ${BRAND.brandName}`,
+            `Complete sitemap for ${BRAND.brandName}. Browse all our drainage services, locations, and blog posts.`,
+            "/sitemap"
+          ),
+          generateBreadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Sitemap", url: "/sitemap" },
+          ]),
+        ]}
+      />
+      <section className="section-padding">
         <div className="container-wide px-4">
           <h1 className="text-3xl font-bold mb-8">Sitemap</h1>
 
@@ -217,8 +233,8 @@ const Sitemap = () => {
             <p>Total pages: {totalPages}</p>
           </div>
         </div>
-      </div>
-    </>
+      </section>
+    </Layout>
   );
 };
 
