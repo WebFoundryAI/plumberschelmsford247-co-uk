@@ -128,6 +128,16 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <a
+                  href="/sitemap.xml"
+                  className="text-background/70 hover:text-accent transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  XML Sitemap
+                </a>
+              </li>
+              <li>
                 <Link
                   to="/admin"
                   className="text-background/70 hover:text-accent transition-colors"

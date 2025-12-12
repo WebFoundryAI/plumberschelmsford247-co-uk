@@ -16,7 +16,7 @@ export default defineConfig(({ mode }) => ({
     VitePWA({
       registerType: "autoUpdate",
       injectRegister: "script-defer",
-      includeAssets: ["favicon.png", "og/*.jpg", "images/*.jpg"],
+      includeAssets: ["favicon.png", "og/*.jpg", "images/*.jpg", "sitemap.xml", "robots.txt"],
       manifest: {
         name: "Blocked Drains Swindon",
         short_name: "Drain Help",
