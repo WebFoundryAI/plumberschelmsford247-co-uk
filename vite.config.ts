@@ -15,11 +15,20 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks: {
-          // Split vendor chunks
+          // Core React - always needed
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-ui': ['@radix-ui/react-select', '@radix-ui/react-accordion', '@radix-ui/react-dialog', '@radix-ui/react-popover'],
-          'vendor-form': ['react-hook-form', '@hookform/resolvers', 'zod'],
+          // Query client - needed for data fetching
           'vendor-query': ['@tanstack/react-query'],
+          // Form libraries - deferred (lazy loaded with LeadForm)
+          'vendor-form': ['react-hook-form', '@hookform/resolvers', 'zod'],
+          // UI components - deferred (only loaded when needed)
+          'vendor-ui-deferred': [
+            '@radix-ui/react-select',
+            '@radix-ui/react-accordion',
+            '@radix-ui/react-dialog',
+            '@radix-ui/react-popover',
+            '@radix-ui/react-toast',
+          ],
         },
       },
     },

@@ -1,6 +1,29 @@
+import { lazy, Suspense } from "react";
 import { BRAND } from "@/config/brand";
-import { LeadForm } from "@/components/forms/LeadForm";
 import { Phone, Clock, Shield } from "lucide-react";
+
+// Lazy load the form to defer react-hook-form, zod, and @radix-ui/react-select
+const LeadForm = lazy(() => import("@/components/forms/LeadForm").then(m => ({ default: m.LeadForm })));
+
+// Lightweight placeholder while form loads
+function FormPlaceholder() {
+  return (
+    <div className="space-y-4 animate-pulse">
+      <div className="h-8 bg-muted rounded w-3/4" />
+      <div className="h-4 bg-muted rounded w-1/2" />
+      <div className="space-y-3 mt-6">
+        <div className="h-10 bg-muted rounded" />
+        <div className="h-10 bg-muted rounded" />
+        <div className="grid grid-cols-2 gap-3">
+          <div className="h-10 bg-muted rounded" />
+          <div className="h-10 bg-muted rounded" />
+        </div>
+        <div className="h-10 bg-muted rounded" />
+        <div className="h-12 bg-primary/20 rounded" />
+      </div>
+    </div>
+  );
+}
 
 export function HeroWithForm() {
   return (
@@ -50,7 +73,7 @@ export function HeroWithForm() {
               </p>
             </div>
 
-            {/* Lead form - removed animation for faster paint */}
+            {/* Lead form - lazy loaded with placeholder */}
             <div className="bg-card rounded-xl p-6 md:p-8 shadow-2xl">
               <h2 className="text-2xl font-bold text-card-foreground mb-2">
                 Get Your Free Quote
@@ -58,7 +81,9 @@ export function HeroWithForm() {
               <p className="text-muted-foreground mb-6">
                 Fill in your details and we'll call you back within 30 minutes
               </p>
-              <LeadForm sourcePage="home-hero" compact />
+              <Suspense fallback={<FormPlaceholder />}>
+                <LeadForm sourcePage="home-hero" compact />
+              </Suspense>
             </div>
           </div>
         </div>

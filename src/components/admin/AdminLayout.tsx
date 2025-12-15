@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { useAuth, signOut } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 import { MAP_CONFIG } from "@/config/maps";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
@@ -59,16 +59,11 @@ export function AdminLayout({ children, title, description }: AdminLayoutProps) 
   const location = useLocation();
   const navigate = useNavigate();
   const { user, loading, isAdmin } = useAuth();
-  const { toast } = useToast();
 
   const handleSignOut = async () => {
     const { error } = await signOut();
     if (error) {
-      toast({
-        title: "Sign out failed",
-        description: error.message,
-        variant: "destructive",
-      });
+      toast.error(error.message);
     } else {
       navigate("/login");
     }

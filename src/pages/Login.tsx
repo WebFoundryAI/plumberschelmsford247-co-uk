@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 import { useAuth, signIn, signUp } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { BRAND } from "@/config/brand";
@@ -20,7 +20,6 @@ const Login = () => {
   const [resetEmailSent, setResetEmailSent] = useState(false);
   const { user, loading } = useAuth();
   const navigate = useNavigate();
-  const { toast } = useToast();
 
   // Redirect if already logged in
   useEffect(() => {
@@ -39,24 +38,13 @@ const Login = () => {
       });
 
       if (error) {
-        toast({
-          title: "Error",
-          description: error.message,
-          variant: "destructive",
-        });
+        toast.error(error.message);
       } else {
         setResetEmailSent(true);
-        toast({
-          title: "Check your email",
-          description: "We've sent you a password reset link.",
-        });
+        toast.success("Check your email for the reset link");
       }
     } catch (err) {
-      toast({
-        title: "Error",
-        description: "An unexpected error occurred. Please try again.",
-        variant: "destructive",
-      });
+      toast.error("An unexpected error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -71,43 +59,24 @@ const Login = () => {
         const { error } = await signUp(email, password);
         if (error) {
           if (error.message.includes("already registered")) {
-            toast({
-              title: "Account exists",
-              description: "This email is already registered. Please sign in instead.",
-              variant: "destructive",
-            });
+            toast.error("This email is already registered. Please sign in instead.");
           } else {
-            toast({
-              title: "Sign up failed",
-              description: error.message,
-              variant: "destructive",
-            });
+            toast.error(error.message);
           }
         } else {
-          toast({
-            title: "Account created",
-            description: "You can now sign in with your credentials.",
-          });
+          toast.success("Account created. You can now sign in.");
           setIsSignUp(false);
         }
       } else {
         const { error } = await signIn(email, password);
         if (error) {
-          toast({
-            title: "Sign in failed",
-            description: error.message,
-            variant: "destructive",
-          });
+          toast.error(error.message);
         } else {
           navigate("/admin");
         }
       }
     } catch (err) {
-      toast({
-        title: "Error",
-        description: "An unexpected error occurred. Please try again.",
-        variant: "destructive",
-      });
+      toast.error("An unexpected error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }

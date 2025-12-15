@@ -5,7 +5,7 @@ import { AdminLayout } from "@/components/admin/AdminLayout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 import { Download, RefreshCw, Check, FileText, AlertTriangle } from "lucide-react";
 import { SERVICES } from "@/config/services";
 import { LOCATIONS } from "@/config/locations";
@@ -24,7 +24,6 @@ interface SitemapStatus {
 }
 
 const AdminSitemap = () => {
-  const { toast } = useToast();
   const queryClient = useQueryClient();
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedXml, setGeneratedXml] = useState<string | null>(null);
@@ -216,16 +215,9 @@ ${urls.join("\n")}
       // Update status in database
       await updateStatusMutation.mutateAsync(urls.length);
       
-      toast({
-        title: "Sitemap Generated",
-        description: `Generated sitemap with ${urls.length} URLs`,
-      });
+      toast.success(`Generated sitemap with ${urls.length} URLs`);
     } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to generate sitemap",
-        variant: "destructive",
-      });
+      toast.error("Failed to generate sitemap");
     } finally {
       setIsGenerating(false);
     }
@@ -244,20 +236,14 @@ ${urls.join("\n")}
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 
-    toast({
-      title: "Downloaded",
-      description: "sitemap.xml has been downloaded",
-    });
+    toast.success("sitemap.xml has been downloaded");
   };
 
   const copyToClipboard = () => {
     if (!generatedXml) return;
     
     navigator.clipboard.writeText(generatedXml);
-    toast({
-      title: "Copied",
-      description: "Sitemap XML copied to clipboard",
-    });
+    toast.success("Sitemap XML copied to clipboard");
   };
 
   // Count URLs

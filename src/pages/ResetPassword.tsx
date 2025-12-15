@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { BRAND } from "@/config/brand";
 import { Loader2, CheckCircle } from "lucide-react";
@@ -17,7 +17,6 @@ const ResetPassword = () => {
   const [isValidSession, setIsValidSession] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-  const { toast } = useToast();
 
   useEffect(() => {
     // Check if we have a valid recovery session
@@ -47,20 +46,12 @@ const ResetPassword = () => {
     e.preventDefault();
     
     if (password !== confirmPassword) {
-      toast({
-        title: "Passwords don't match",
-        description: "Please ensure both passwords are the same.",
-        variant: "destructive",
-      });
+      toast.error("Passwords don't match. Please ensure both passwords are the same.");
       return;
     }
 
     if (password.length < 6) {
-      toast({
-        title: "Password too short",
-        description: "Password must be at least 6 characters.",
-        variant: "destructive",
-      });
+      toast.error("Password must be at least 6 characters.");
       return;
     }
 
@@ -70,25 +61,14 @@ const ResetPassword = () => {
       const { error } = await supabase.auth.updateUser({ password });
       
       if (error) {
-        toast({
-          title: "Reset failed",
-          description: error.message,
-          variant: "destructive",
-        });
+        toast.error(error.message);
       } else {
         setIsSuccess(true);
-        toast({
-          title: "Password updated",
-          description: "Your password has been reset successfully.",
-        });
+        toast.success("Your password has been reset successfully.");
         setTimeout(() => navigate("/login"), 2000);
       }
     } catch (err) {
-      toast({
-        title: "Error",
-        description: "An unexpected error occurred. Please try again.",
-        variant: "destructive",
-      });
+      toast.error("An unexpected error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
