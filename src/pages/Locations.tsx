@@ -210,6 +210,25 @@ const Locations = () => {
         </div>
       </section>
 
+      {/* CTA Section */}
+      <section className="section-padding bg-primary/5">
+        <div className="container-wide px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Get Your Drains Sorted?</h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              Whether you're in Swindon, Royal Wootton Bassett, or the surrounding villages, our local team is just a phone call away.
+            </p>
+            <Link 
+              to="/contact" 
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary/90 transition-colors"
+            >
+              <Phone className="h-5 w-5" />
+              Call us now on {BRAND.phone}
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Internal links */}
       <section className="section-padding bg-muted/30">
         <div className="container-wide px-4 text-center">
