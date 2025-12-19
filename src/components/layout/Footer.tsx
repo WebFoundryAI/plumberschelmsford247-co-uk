@@ -89,6 +89,14 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/faq"
+                  className="text-background/85 hover:text-accent transition-colors block min-h-[48px] py-3 md:min-h-0 md:py-0 md:inline"
+                >
+                  FAQs
+                </Link>
+              </li>
             </ul>
           </div>
 
