@@ -17,15 +17,23 @@ export default defineConfig(({ mode }) => ({
         manualChunks: {
           // Core React - always needed
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          // SEO - needed for every page
+          'vendor-seo': ['react-helmet-async'],
           // Query client - needed for data fetching
           'vendor-query': ['@tanstack/react-query'],
           // Form libraries - deferred (lazy loaded with LeadForm)
           'vendor-form': ['react-hook-form', '@hookform/resolvers', 'zod'],
           // UI components - deferred (only loaded when needed)
-          'vendor-ui-deferred': [
+          'vendor-ui': [
             '@radix-ui/react-select',
             '@radix-ui/react-accordion',
             '@radix-ui/react-dialog',
+            '@radix-ui/react-checkbox',
+            '@radix-ui/react-switch',
+            '@radix-ui/react-tooltip',
+            '@radix-ui/react-label',
+            '@radix-ui/react-separator',
+            '@radix-ui/react-slot',
           ],
         },
       },
