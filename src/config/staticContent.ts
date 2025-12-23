@@ -1486,15 +1486,97 @@ Homeowners can take practical steps to mitigate drainage issues. Regularly check
 
 At Blocked Drains Swindon, we use the latest technology and techniques to ensure your internal drains are unblocked effectively. Contact us now at 01793487489.`,
 
-  "subServiceInLocation:swindon:emergency-drain-services:flooding-emergency": `Experiencing a flooding emergency can be distressing, especially in Swindon where heavy rain can quickly overwhelm drainage systems. At Blocked Drains Swindon, we specialise in restoring order when floods strike, ensuring swift and effective response to minimise damage.
+  "subServiceInLocation:swindon:emergency-drain-services:flooding-emergency": `# Emergency Drain Clearance in Swindon – Fast 24/7 Response
 
-Flooding in Swindon can be attributed to various factors, including heavy rainfall, blocked drains, and outdated or damaged pipework. Many homes in the area may still have traditional drainage systems not equipped to handle sudden water surges. Areas near watercourses can be particularly vulnerable during adverse weather. If you live near The Brow, Wroughton, or close to Coate Water Country Park, flooding may pose a higher threat.
+Water overflowing? Garden or driveway flooding? We respond to emergency drainage issues in Swindon within 1–2 hours — day or night.
 
-When drain issues arise and excess water accumulates, acting quickly is essential. Signs of flooding include rising water levels in basements, pools forming in gardens, or water backing up in sinks and toilets. You may also notice foul odours or gurgling noises from drainage fixtures, signalling a blockage requiring immediate attention.
+---
 
-Homeowners in Swindon should take proactive measures to safeguard properties from flooding. Regular maintenance, including clearing leaves and debris from outdoor drains, can help prevent water pooling. Check your property's drainage system for signs of wear—a small crack can lead to significant problems during heavy rainfall.
+## Drain Emergencies We Fix Fast
 
-For flooding emergencies in Swindon, contact Blocked Drains Swindon immediately at 01793487489. Our team offers fast response, 24/7.`,
+We handle urgent situations like:
+
+- Overflowing or backed-up toilets and manholes
+- Surface flooding from blocked gullies
+- Standing water from failed drainage
+- Commercial drain failures needing immediate resolution
+
+If you're in Swindon and the water's rising — we can help.
+
+[Call Now →](tel:01793487489) or [Book Emergency Visit →](/contact)
+
+---
+
+## Same-Day Help, No Delay
+
+Our Swindon-based engineers are on call 7 days a week. Once booked, we aim to be on-site in:
+
+- **60–90 minutes (within central Swindon)**
+- **Under 2 hours (outlying villages and towns)**
+
+We carry onboard high-pressure jetting units and rodding tools — no waiting for extra equipment.
+
+> "Patio was flooding during a storm. They cleared it in 30 minutes. Fast, polite, and very reasonable."
+> – Jon T., Wroughton
+
+---
+
+## Emergency Pricing
+
+Emergency drain clearance starts from **£129 + VAT**. This includes:
+
+- Priority same-day response
+- Initial blockage clearance attempt
+- Advice if further work or CCTV is needed
+
+We don't charge hidden extras. You'll get a clear quote before anything begins.
+
+[See full pricing →](/pricing)
+
+---
+
+## What If It's More Than a Blockage?
+
+If we find pipe collapse, root ingress or repeated failures, we can:
+
+- Use CCTV drain cameras to inspect the system
+- Quote for drain repair or lining
+- Provide written reports for insurance if needed
+
+[More about drain surveys →](/services/cctv-drain-surveys)
+
+---
+
+## Emergency Drain FAQs
+
+**How fast can you get here?**
+Usually within 60–90 minutes in Swindon. We'll confirm on booking.
+
+**Can you work in bad weather or flooding?**
+Yes — we attend in storms, heavy rain, and out-of-hours calls.
+
+**What should I do until you arrive?**
+Turn off taps, avoid flushing, and keep children/pets away from flooded areas. We'll take over quickly.
+
+**Do you work with landlords or commercial sites?**
+Yes — we cover homes, pubs, shops, warehouses and managing agents.
+
+---
+
+## Related Services
+
+- [Drain Jetting Swindon →](/location/swindon/drain-jetting)
+- [CCTV Drain Surveys →](/services/cctv-drain-surveys)
+- [Blocked Sinks & Toilets →](/services/blocked-drains/blocked-sink)
+
+---
+
+## Call Now for Emergency Drain Clearance in Swindon
+
+**Phone:** [01793 487489](tel:01793487489)
+**Or [Request Immediate Help →](/contact)**
+
+We respond fast — 7 days a week — with no call-out gimmicks and full transparency.`,
 
   "subServiceInLocation:swindon:emergency-drain-services:sewage-emergency": `If you're facing a sewage emergency in Swindon, Blocked Drains Swindon is here to assist. Our team of experienced professionals is available round the clock to address urgent drainage issues swiftly and efficiently. A sewage emergency can pose serious health risks and lead to significant property damage if not handled promptly.
 
