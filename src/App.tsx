@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { LegacyLocationRedirect } from "./components/LegacyLocationRedirect";
 
 // Component to redirect to static sitemap.xml file
 const SitemapXmlRedirect = () => {
@@ -89,6 +90,8 @@ const App = () => (
             <Route path="/locations/:locationSlug" element={<LocationDetail />} />
             <Route path="/locations/:locationSlug/:serviceSlug" element={<LocationServiceDetail />} />
             <Route path="/locations/:locationSlug/:serviceSlug/:subServiceSlug" element={<LocationSubServiceDetail />} />
+            {/* Legacy /location/* redirects to /locations/* */}
+            <Route path="/location/*" element={<LegacyLocationRedirect />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/faq" element={<FAQ />} />

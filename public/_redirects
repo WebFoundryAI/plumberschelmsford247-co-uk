@@ -1,0 +1,5 @@
+# Permanent redirects from legacy /location/* URLs to /locations/*
+# This preserves SEO rankings and backlinks after the URL structure change
+
+# Handle all /location/* paths with 301 redirect
+/location/*  /locations/:splat  301
