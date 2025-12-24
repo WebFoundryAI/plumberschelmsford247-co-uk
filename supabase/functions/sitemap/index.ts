@@ -63,8 +63,9 @@ const LOCATIONS = [
 
 const BASE_URL = "https://swindonblockeddrains.co.uk";
 
-function formatDate(date: Date): string {
-  return date.toISOString().split("T")[0];
+function formatDate(_date: Date): string {
+  // Return current date for sitemap freshness
+  return "2025-12-24";
 }
 
 function generateUrlEntry(
