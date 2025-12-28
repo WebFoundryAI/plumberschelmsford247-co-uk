@@ -4,7 +4,7 @@
  * Uses centralized routeMeta.ts for static routes
  * 
  * Canonical rules enforced:
- * - Homepage: https://swindonblockeddrains.co.uk/
+ * - Homepage: https://manchesterblockeddrains.co.uk/
  * - All other routes: NO trailing slash
  */
 
@@ -22,7 +22,7 @@ import {
 } from "@/seo/routeMeta";
 
 const BASE_URL = `https://${BRAND.domain}`;
-const DEFAULT_OG_IMAGE = `${BASE_URL}/og/swindonblockeddrains-og.jpg`;
+const DEFAULT_OG_IMAGE = `${BASE_URL}/og/manchesterblockeddrains-og.jpg`;
 
 interface RouteSEOHeadProps {
   override?: {
@@ -62,8 +62,8 @@ function getDynamicSeo(pathname: string, params: RouteParams) {
     const service = getServiceBySlug(serviceSlug);
     const name = service?.name || slugToTitle(serviceSlug);
     return {
-      title: `${name} Swindon | Professional Service`,
-      description: `${service?.description || `Professional ${name.toLowerCase()} services in Swindon.`} Call 01793 487489 for fast response.`,
+      title: `${name} Manchester | Professional Service`,
+      description: `${service?.description || `Professional ${name.toLowerCase()} services in Manchester.`} Call 0333 880 2296 for fast response.`,
     };
   }
 
@@ -75,8 +75,8 @@ function getDynamicSeo(pathname: string, params: RouteParams) {
     const subService = getSubServiceBySlug(serviceSlug, subServiceSlug);
     const name = subService?.name || slugToTitle(subServiceSlug);
     return {
-      title: `${name} Swindon | Expert Service`,
-      description: `Professional ${name.toLowerCase()} in Swindon. Fast response, fixed pricing, no call-out fee. Call 01793 487489.`,
+      title: `${name} Manchester | Expert Service`,
+      description: `Professional ${name.toLowerCase()} in Manchester. Fast response, fixed pricing, no call-out fee. Call 0333 880 2296.`,
     };
   }
 
@@ -86,7 +86,7 @@ function getDynamicSeo(pathname: string, params: RouteParams) {
     const name = location?.name || slugToTitle(locationSlug);
     return {
       title: `Drain Services ${name} | Local Drainage Experts`,
-      description: `Professional drainage services in ${name}. 24/7 emergency drain unblocking, CCTV surveys, and repairs. No call-out fee. Call 01793 487489.`,
+      description: `Professional drainage services in ${name}. 24/7 emergency drain unblocking, CCTV surveys, and repairs. No call-out fee. Call 0333 880 2296.`,
     };
   }
 
@@ -98,7 +98,7 @@ function getDynamicSeo(pathname: string, params: RouteParams) {
     const svcName = service?.name || slugToTitle(serviceSlug);
     return {
       title: `${svcName} ${locName} | Local Service`,
-      description: `${svcName} in ${locName}, near Swindon. Fast response, fixed pricing, no call-out fee. Professional local service. Call 01793 487489.`,
+      description: `${svcName} in ${locName}, Greater Manchester. Fast response, fixed pricing, no call-out fee. Professional local service. Call 0333 880 2296.`,
     };
   }
 
@@ -110,7 +110,7 @@ function getDynamicSeo(pathname: string, params: RouteParams) {
     const subName = subService?.name || slugToTitle(subServiceSlug);
     return {
       title: `${subName} ${locName} | Expert Help`,
-      description: `${subName} services in ${locName}, near Swindon. 24/7 availability, fixed pricing, no call-out fee. Call 01793 487489.`,
+      description: `${subName} services in ${locName}, Greater Manchester. 24/7 availability, fixed pricing, no call-out fee. Call 0333 880 2296.`,
     };
   }
 
@@ -118,8 +118,8 @@ function getDynamicSeo(pathname: string, params: RouteParams) {
   if (pathname.match(/^\/blog\/[^\/]+\/?$/) && slug) {
     const postTitle = slugToTitle(slug);
     return {
-      title: `${postTitle} | Swindon Drainage Blog`,
-      description: `Read our article about ${postTitle.toLowerCase()}. Expert drainage advice from local Swindon specialists.`,
+      title: `${postTitle} | Manchester Drainage Blog`,
+      description: `Read our article about ${postTitle.toLowerCase()}. Expert drainage advice from local Manchester specialists.`,
     };
   }
 
@@ -143,7 +143,7 @@ export function RouteSEOHead({ override, ogImage }: RouteSEOHeadProps = {}) {
   
   const title = override?.title || staticMeta?.title || dynamicMeta?.title || BRAND.brandName;
   const description = override?.description || staticMeta?.description || dynamicMeta?.description || 
-    `Professional drainage services in ${BRAND.serviceAreaLabel}. Call 01793 487489.`;
+    `Professional drainage services in ${BRAND.serviceAreaLabel}. Call 0333 880 2296.`;
   
   // Canonical path: no trailing slash except homepage
   const canonicalPath = override?.canonicalPath || normalizeCanonicalPath(pathname);

@@ -23,7 +23,7 @@ interface SeoProps {
 }
 
 const BASE_URL = `https://${BRAND.domain}`;
-const DEFAULT_OG_IMAGE = `${BASE_URL}/og/swindonblockeddrains-og.jpg`;
+const DEFAULT_OG_IMAGE = `${BASE_URL}/og/manchesterblockeddrains-og.jpg`;
 
 export function Seo({
   title,

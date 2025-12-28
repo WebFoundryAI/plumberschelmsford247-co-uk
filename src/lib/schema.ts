@@ -131,7 +131,7 @@ export function generateLocalBusinessSchema(
     },
     image: {
       "@type": "ImageObject",
-      url: `https://${BRAND.domain}/og/swindonblockeddrains-og.jpg`,
+      url: `https://${BRAND.domain}/og/manchesterblockeddrains-og.jpg`,
       width: 1200,
       height: 630,
     },
@@ -139,7 +139,7 @@ export function generateLocalBusinessSchema(
       "@type": "PostalAddress",
       streetAddress: BRAND.addressLine1,
       addressLocality: BRAND.primaryLocation,
-      addressRegion: loc.countyOrRegion || "Wiltshire",
+      addressRegion: loc.countyOrRegion || "Greater Manchester",
       postalCode: BRAND.postcode,
       addressCountry: "GB",
     },
@@ -151,27 +151,31 @@ export function generateLocalBusinessSchema(
     areaServed: [
       {
         "@type": "City",
-        name: "Swindon",
+        name: "Manchester",
       },
       {
         "@type": "City",
-        name: "Royal Wootton Bassett",
+        name: "Salford",
       },
       {
         "@type": "City",
-        name: "Highworth",
+        name: "Stockport",
       },
       {
         "@type": "City",
-        name: "Purton",
+        name: "Bolton",
       },
       {
         "@type": "City",
-        name: "Cricklade",
+        name: "Oldham",
       },
       {
         "@type": "City",
-        name: "Wroughton",
+        name: "Didsbury",
+      },
+      {
+        "@type": "City",
+        name: "Chorlton",
       },
     ],
     hasOfferCatalog: {
@@ -228,7 +232,7 @@ export function generatePlaceSchema(location: LocationConfig): SchemaOrgObject {
     address: {
       "@type": "PostalAddress",
       addressLocality: location.name,
-      addressRegion: location.countyOrRegion || "Wiltshire",
+      addressRegion: location.countyOrRegion || "Greater Manchester",
       addressCountry: "GB",
     },
     geo: {
@@ -286,7 +290,7 @@ export function generateServiceInLocationSchema(
       address: {
         "@type": "PostalAddress",
         addressLocality: location.name,
-        addressRegion: location.countyOrRegion || "Wiltshire",
+        addressRegion: location.countyOrRegion || "Greater Manchester",
         addressCountry: "GB",
       },
       geo: {
@@ -453,7 +457,7 @@ export function generateOrganizationSchema(): SchemaOrgObject {
     },
     image: {
       "@type": "ImageObject",
-      url: `https://${BRAND.domain}/og/swindonblockeddrains-og.jpg`,
+      url: `https://${BRAND.domain}/og/manchesterblockeddrains-og.jpg`,
       width: 1200,
       height: 630,
     },

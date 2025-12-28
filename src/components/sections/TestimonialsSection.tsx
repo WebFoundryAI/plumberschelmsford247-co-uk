@@ -3,19 +3,19 @@ import { Star } from "lucide-react";
 export const testimonials = [
   {
     name: "Sarah M.",
-    location: "Swindon",
+    location: "Didsbury",
     rating: 5,
     text: "Fantastic service! They arrived within the hour and had our blocked drain cleared in no time. Very professional and reasonably priced.",
   },
   {
     name: "David T.",
-    location: "Royal Wootton Bassett",
+    location: "Salford",
     rating: 5,
     text: "Called on a Sunday with an emergency and they came straight out. Can't recommend them enough. Will definitely use again.",
   },
   {
     name: "Emma L.",
-    location: "Highworth",
+    location: "Stockport",
     rating: 5,
     text: "Very impressed with the CCTV survey. They explained everything clearly and fixed the issue same day. Great value for money.",
   },

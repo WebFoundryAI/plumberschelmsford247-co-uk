@@ -48,7 +48,7 @@ export function HeroWithForm() {
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance">
-                Blocked Drains Swindon – 24/7 Local Drain Unblocking
+                Blocked Drains Manchester – 24/7 Local Drain Unblocking
               </h1>
 
               {/* FIXED: Changed from /80 to /90 for better contrast (4.5:1+) */}

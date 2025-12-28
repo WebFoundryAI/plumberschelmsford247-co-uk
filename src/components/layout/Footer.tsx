@@ -60,7 +60,7 @@ export function Footer() {
                   to="/"
                   className="text-background/85 hover:text-accent transition-colors block min-h-[48px] py-3 md:min-h-0 md:py-0 md:inline font-medium"
                 >
-                  Blocked Drains Swindon
+                  Blocked Drains Manchester
                 </Link>
               </li>
               <li>
