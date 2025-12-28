@@ -1,13 +1,13 @@
 # SEO Verification Checklist
 
 ### 1. Sitemap Verification
-- [ ] Fetch `https://manchesterblockeddrains.co.uk/sitemap.xml` - confirm HTTP 200
+- [ ] Fetch `https://manchesterblockeddrain.co.uk/sitemap.xml` - confirm HTTP 200
 - [ ] Verify all `<url>` entries have `<loc>`, `<lastmod>`, `<changefreq>`, `<priority>`
 - [ ] Confirm `/llm.html` is included in sitemap
 - [ ] Check all URLs use consistent trailing slash format
 
 ### 2. Robots.txt Verification
-- [ ] Fetch `https://manchesterblockeddrains.co.uk/robots.txt` - confirm HTTP 200
+- [ ] Fetch `https://manchesterblockeddrain.co.uk/robots.txt` - confirm HTTP 200
 - [ ] Verify `Sitemap:` directive points to correct absolute URL
 - [ ] Confirm GPTBot, PerplexityBot, Claude-Web are allowed
 - [ ] Confirm Google-Extended, CCBot are disallowed
@@ -37,13 +37,13 @@ Key pages to check:
 - [ ] Check for no errors/warnings in structured data
 
 ### 5. LLM Page Verification
-- [ ] Fetch `https://manchesterblockeddrains.co.uk/llm.html` - confirm HTTP 200
+- [ ] Fetch `https://manchesterblockeddrain.co.uk/llm.html` - confirm HTTP 200
 - [ ] Verify page is static HTML (no JS required to render content)
 - [ ] Confirm JSON-LD schemas are present and valid
 - [ ] Check all factual information matches main site
 
 ### 6. Google Search Console
-- [ ] Submit sitemap at `https://manchesterblockeddrains.co.uk/sitemap.xml`
+- [ ] Submit sitemap at `https://manchesterblockeddrain.co.uk/sitemap.xml`
 - [ ] Verify ownership with google verification file
 - [ ] Check for crawl errors
 - [ ] Monitor index coverage

@@ -8,7 +8,7 @@ This document covers prerendering options for SEO optimization.
 
 ### Setup
 1. Sign up at https://prerender.io
-2. Add your site URL: `https://manchesterblockeddrains.co.uk`
+2. Add your site URL: `https://manchesterblockeddrain.co.uk`
 3. Configure your CDN/proxy to route bot traffic to Prerender.io
 
 ### User Agents to Prerender
@@ -102,7 +102,7 @@ The prerendered HTML must contain the **exact same canonical URL** as the client
 
 ### 1. Google Search Console - URL Inspection
 1. Go to [Google Search Console](https://search.google.com/search-console)
-2. Enter a URL: `https://manchesterblockeddrains.co.uk/services/blocked-drains/`
+2. Enter a URL: `https://manchesterblockeddrain.co.uk/services/blocked-drains/`
 3. Click "Test Live URL"
 4. Click "View Tested Page" → "Screenshot" and "HTML"
 5. Verify:
@@ -126,7 +126,7 @@ The prerendered HTML must contain the **exact same canonical URL** as the client
 ```bash
 # Simulate Googlebot
 curl -A "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" \
-  https://manchesterblockeddrains.co.uk/services/blocked-drains/
+  https://manchesterblockeddrain.co.uk/services/blocked-drains/
 ```
 
 ---

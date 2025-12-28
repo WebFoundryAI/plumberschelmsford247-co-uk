@@ -3,9 +3,9 @@
 ## 1. Quick URL Checks
 
 Test these URLs return HTTP 200:
-- [ ] https://manchesterblockeddrains.co.uk/robots.txt
-- [ ] https://manchesterblockeddrains.co.uk/sitemap.xml
-- [ ] https://manchesterblockeddrains.co.uk/llm.html
+- [ ] https://manchesterblockeddrain.co.uk/robots.txt
+- [ ] https://manchesterblockeddrain.co.uk/sitemap.xml
+- [ ] https://manchesterblockeddrain.co.uk/llm.html
 
 ## 2. Browser Console Checks
 
@@ -98,10 +98,10 @@ These routes are NOT in the sitemap.
 
 | Route | Canonical URL |
 |-------|---------------|
-| Homepage | `https://manchesterblockeddrains.co.uk/` |
-| Services | `https://manchesterblockeddrains.co.uk/services` |
-| Locations | `https://manchesterblockeddrains.co.uk/locations` |
-| Location detail | `https://manchesterblockeddrains.co.uk/locations/manchester` |
+| Homepage | `https://manchesterblockeddrain.co.uk/` |
+| Services | `https://manchesterblockeddrain.co.uk/services` |
+| Locations | `https://manchesterblockeddrain.co.uk/locations` |
+| Location detail | `https://manchesterblockeddrain.co.uk/locations/manchester` |
 
 ## 7. Structured Data Test
 
