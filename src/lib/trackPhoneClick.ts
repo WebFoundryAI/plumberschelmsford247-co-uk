@@ -9,12 +9,21 @@ declare global {
 }
 
 export async function trackPhoneClick(sourcePage: string) {
-  // Track in GA4
+  // Track conversion in GA4
   if (typeof window !== "undefined" && window.gtag) {
+    // Primary phone click conversion
     window.gtag("event", "phone_click", {
-      event_category: "engagement",
+      event_category: "conversion",
       event_label: sourcePage,
       phone_number: BRAND.phone,
+      value: 75, // Higher value than form as more intent
+      currency: "GBP",
+    });
+    
+    // Also track as standard contact event
+    window.gtag("event", "contact", {
+      method: "phone",
+      source_page: sourcePage,
     });
   }
 

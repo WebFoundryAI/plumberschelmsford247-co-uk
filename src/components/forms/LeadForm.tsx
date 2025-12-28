@@ -112,13 +112,24 @@ export function LeadForm({
 
       if (error) throw error;
 
-      // Track in GA4
+      // Track conversion in GA4
       if (typeof window !== "undefined" && window.gtag) {
+        // Primary conversion event
         window.gtag("event", "generate_lead", {
           event_category: "conversion",
           event_label: sourcePage,
           service: data.service,
           location: data.location,
+          value: 50, // Estimated lead value
+          currency: "GBP",
+        });
+        
+        // Additional form submission event for flexibility
+        window.gtag("event", "form_submission", {
+          form_name: "lead_form",
+          form_location: sourcePage,
+          service_type: data.service,
+          area: data.location,
         });
       }
 
