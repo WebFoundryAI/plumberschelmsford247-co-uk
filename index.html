@@ -4,97 +4,78 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- DNS prefetch for deferred resources (non-blocking) -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-    
-    <!-- Preconnect ONLY to fonts (truly critical for FCP) -->
+    <!-- Preconnect to font origins (critical for FCP) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
-    <!-- Preload single critical font weight (700 = hero heading) -->
+    <!-- DNS prefetch for deferred third-party resources -->
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    
+    <!-- Preload critical font files (700=headings, 400=body) -->
     <link rel="preload" href="https://fonts.gstatic.com/s/outfit/v15/QGYyz_MVcBeNP4NjuGObqx1XmO1I4bC0C4G-EiAou6Y.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="https://fonts.gstatic.com/s/outfit/v15/QGYyz_MVcBeNP4NjuGObqx1XmO1I4TC0C4G-EiAou6Y.woff2" as="font" type="font/woff2" crossorigin />
     
     <!-- Hero background preload for LCP -->
     <link rel="preload" href="/src/assets/hero-bg.webp" as="image" type="image/webp" fetchpriority="high" />
     
-    <!-- Google Fonts - fully async load (no preload as="style" which can block) -->
+    <!-- Google Fonts CSS - async load (non-blocking) -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;" />
-    <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    </noscript>
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
     
-    <!-- Critical CSS - inlined for FCP -->
+    <!-- Critical CSS - inlined for immediate FCP (above-the-fold only) -->
     <style>
-      /* Base reset and layout */
-      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-      html { -webkit-text-size-adjust: 100%; }
-      body { 
-        font-family: 'Outfit', system-ui, sans-serif; 
-        background: hsl(210 20% 98%); 
-        color: hsl(215 25% 15%);
-        -webkit-font-smoothing: antialiased;
-        line-height: 1.5;
-      }
+      /* Reset */
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+      body{font-family:'Outfit',system-ui,-apple-system,sans-serif;background:hsl(210 20% 98%);color:hsl(215 25% 15%);-webkit-font-smoothing:antialiased;line-height:1.5}
       
-      /* Layout utilities */
-      .min-h-screen { min-height: 100vh; }
-      .flex { display: flex; }
-      .flex-col { flex-direction: column; }
-      .flex-1 { flex: 1 1 0%; }
-      .items-center { align-items: center; }
-      .justify-between { justify-content: space-between; }
-      .justify-center { justify-content: center; }
-      .gap-2 { gap: 0.5rem; }
-      .gap-3 { gap: 0.75rem; }
-      .w-full { width: 100%; }
-      .h-16 { height: 4rem; }
-      .px-4 { padding-left: 1rem; padding-right: 1rem; }
-      .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-      .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
-      .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
-      .text-sm { font-size: 0.875rem; }
-      .text-xl { font-size: 1.25rem; }
-      .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
-      .font-bold { font-weight: 700; }
-      .font-medium { font-weight: 500; }
+      /* Critical layout */
+      .min-h-screen{min-height:100vh}
+      .flex{display:flex}
+      .flex-col{flex-direction:column}
+      .items-center{align-items:center}
+      .justify-between{justify-content:space-between}
+      .justify-center{justify-content:center}
+      .gap-2{gap:.5rem}
+      .gap-3{gap:.75rem}
+      .w-full{width:100%}
+      .px-4{padding-left:1rem;padding-right:1rem}
+      .py-16{padding-top:4rem;padding-bottom:4rem}
+      .text-sm{font-size:.875rem}
+      .text-xl{font-size:1.25rem}
+      .text-4xl{font-size:2.25rem;line-height:2.5rem}
+      .font-bold{font-weight:700}
+      .font-medium{font-weight:500}
+      .overflow-hidden{overflow:hidden}
+      .relative{position:relative}
       
-      /* Header critical styles */
-      .sticky { position: sticky; }
-      .top-0 { top: 0; }
-      .z-50 { z-index: 50; }
-      .bg-primary { background: hsl(213 80% 35%); }
-      .text-primary-foreground { color: hsl(0 0% 100%); }
-      .bg-card { background: hsl(0 0% 100%); }
-      .border-b { border-bottom-width: 1px; }
-      .border-border { border-color: hsl(214 20% 88%); }
+      /* Header */
+      .sticky{position:sticky}
+      .top-0{top:0}
+      .z-50{z-index:50}
+      .bg-primary{background:hsl(213 80% 35%)}
+      .text-primary-foreground{color:#fff}
+      .bg-card{background:#fff}
+      .border-b{border-bottom-width:1px}
+      .border-border{border-color:hsl(214 20% 88%)}
       
-      /* Hero critical styles */
-      .hero-section { background: linear-gradient(135deg, hsl(213 80% 30%) 0%, hsl(213 75% 20%) 100%); }
-      .hero-overlay { background: linear-gradient(180deg, hsla(213 80% 15% / 0.9) 0%, hsla(213 80% 20% / 0.85) 100%); }
-      .container-wide { max-width: 80rem; margin-left: auto; margin-right: auto; }
-      .overflow-hidden { overflow: hidden; }
-      .relative { position: relative; }
+      /* Hero */
+      .hero-section{background:linear-gradient(135deg,hsl(213 80% 30%),hsl(213 75% 20%))}
+      .hero-overlay{background:linear-gradient(180deg,hsla(213 80% 15%/.9),hsla(213 80% 20%/.85))}
+      .container-wide{max-width:80rem;margin-left:auto;margin-right:auto}
       
       /* Responsive */
-      @media (min-width: 768px) {
-        .md\:py-24 { padding-top: 6rem; padding-bottom: 6rem; }
-        .md\:text-5xl { font-size: 3rem; line-height: 1; }
-      }
-      @media (min-width: 1024px) {
-        .lg\:text-6xl { font-size: 3.75rem; line-height: 1; }
-        .lg\:hidden { display: none; }
-        .lg\:flex { display: flex; }
-        .lg\:pb-0 { padding-bottom: 0; }
-      }
+      @media(min-width:768px){.md\:py-24{padding-top:6rem;padding-bottom:6rem}.md\:text-5xl{font-size:3rem;line-height:1}}
+      @media(min-width:1024px){.lg\:text-6xl{font-size:3.75rem;line-height:1}.lg\:hidden{display:none}.lg\:flex{display:flex}}
       
-      /* Loading state */
-      #root:empty::after {
-        content: '';
-        display: block;
-        width: 100%;
-        min-height: 100vh;
-        background: hsl(210 20% 98%);
-      }
+      /* Skeleton loader - shows instantly before React hydrates */
+      .skeleton-header{height:4rem;background:hsl(213 80% 35%)}
+      .skeleton-hero{min-height:70vh;background:linear-gradient(135deg,hsl(213 80% 30%),hsl(213 75% 20%))}
+      .skeleton-pulse{animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite}
+      @keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+      
+      /* Hide skeleton once React renders */
+      #root:not(:empty) .initial-skeleton{display:none}
     </style>
     
     <!-- Fallback meta - react-helmet-async overrides per route -->
@@ -118,8 +99,19 @@
 
   <body>
     <div id="root">
-      <!-- No-JS fallback: Hero content renders without JS dependency -->
+      <!-- Initial skeleton - visible before React hydrates, hidden after -->
+      <div class="initial-skeleton">
+        <div class="skeleton-header skeleton-pulse"></div>
+        <div class="skeleton-hero skeleton-pulse" style="display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;color:white;padding:2rem;">
+            <div style="font-size:2.5rem;font-weight:700;margin-bottom:1rem;">Blocked Drains Manchester</div>
+            <div style="opacity:.8;">Loading...</div>
+          </div>
+        </div>
+      </div>
+      <!-- No-JS fallback -->
       <noscript>
+        <style>.initial-skeleton{display:none}</style>
         <header style="background:hsl(213 80% 35%);padding:1rem;color:white;">
           <div style="max-width:80rem;margin:0 auto;display:flex;justify-content:space-between;align-items:center;">
             <span style="font-weight:700;font-size:1.25rem;">Blocked Drains Manchester</span>
@@ -133,45 +125,29 @@
         </main>
       </noscript>
     </div>
-    <!-- Main app script - type=module is deferred by default -->
+    <!-- Main app - type=module is deferred by default (non-blocking) -->
     <script type="module" src="/src/main.tsx"></script>
-    <!-- GA4 - load only on user interaction to save 56KB from critical path -->
+    <!-- GA4 - deferred until user interaction -->
     <script>
-      (function() {
+      (function(){
         'use strict';
-        var ga4Loaded = false;
-        
-        function loadGA4() {
-          if (ga4Loaded) return;
-          ga4Loaded = true;
-          
-          var s = document.createElement('script');
-          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-ZBN7YE9HZJ';
-          s.async = true;
-          s.onerror = function() {
-            console.warn('GA4 script failed to load');
-          };
+        var loaded=false;
+        function load(){
+          if(loaded)return;
+          loaded=true;
+          var s=document.createElement('script');
+          s.src='https://www.googletagmanager.com/gtag/js?id=G-ZBN7YE9HZJ';
+          s.async=true;
           document.head.appendChild(s);
-          
-          window.dataLayer = window.dataLayer || [];
-          function gtag() { window.dataLayer.push(arguments); }
-          window.gtag = gtag;
-          gtag('js', new Date());
-          gtag('config', 'G-ZBN7YE9HZJ');
+          window.dataLayer=window.dataLayer||[];
+          function gtag(){window.dataLayer.push(arguments)}
+          window.gtag=gtag;
+          gtag('js',new Date());
+          gtag('config','G-ZBN7YE9HZJ');
         }
-        
-        // Wait for DOM to be interactive before adding listeners
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', function() {
-            ['scroll', 'click', 'touchstart'].forEach(function(e) {
-              document.addEventListener(e, loadGA4, { once: true, passive: true });
-            });
-          });
-        } else {
-          ['scroll', 'click', 'touchstart'].forEach(function(e) {
-            document.addEventListener(e, loadGA4, { once: true, passive: true });
-          });
-        }
+        ['scroll','click','touchstart'].forEach(function(e){
+          document.addEventListener(e,load,{once:true,passive:true});
+        });
       })();
     </script>
   </body>
