@@ -6,7 +6,7 @@
     
     <!-- DNS prefetch for deferred resources (non-blocking) -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-    <link rel="dns-prefetch" href="//krxfvrxmriwzfwzorvzw.supabase.co" />
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
     
     <!-- Preconnect ONLY to fonts (truly critical for FCP) -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -117,7 +117,23 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- No-JS fallback: Hero content renders without JS dependency -->
+      <noscript>
+        <header style="background:hsl(213 80% 35%);padding:1rem;color:white;">
+          <div style="max-width:80rem;margin:0 auto;display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-weight:700;font-size:1.25rem;">Blocked Drains Manchester</span>
+            <a href="tel:0161 222 1234" style="color:hsl(45 95% 50%);font-weight:700;">0161 222 1234</a>
+          </div>
+        </header>
+        <main style="background:linear-gradient(135deg,hsl(213 80% 30%),hsl(213 75% 20%));color:white;padding:4rem 1rem;text-align:center;">
+          <h1 style="font-size:2.5rem;margin-bottom:1rem;">24/7 Emergency Drain Unblocking</h1>
+          <p style="margin-bottom:2rem;opacity:0.9;">Fast, reliable drainage solutions across Greater Manchester</p>
+          <a href="tel:0161 222 1234" style="display:inline-block;background:hsl(45 95% 50%);color:hsl(215 25% 12%);padding:1rem 2rem;border-radius:0.5rem;font-weight:700;text-decoration:none;">Call Now: 0161 222 1234</a>
+        </main>
+      </noscript>
+    </div>
+    <!-- Main app script - type=module is deferred by default -->
     <script type="module" src="/src/main.tsx"></script>
     <!-- GA4 - load only on user interaction to save 56KB from critical path -->
     <script>
