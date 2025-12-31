@@ -22,6 +22,6 @@ export function buildStaticMapUrl(location: LocationConfig): string {
     }
   }
 
-  // Fallback to local placeholder image
-  return "/images/map-placeholder.jpg";
+  // Fallback to local WebP placeholder image
+  return "/images/map-placeholder.webp";
 }

@@ -46,7 +46,7 @@ export const BRAND: BrandConfig = {
   addressLine2: "Oxford Court, Manchester",
   postcode: "M2 3WQ",
   companyNumber: "",
-  primaryColour: "#005BBB",
+  primaryColour: "#0EA5E9",
   secondaryColour: "#FFD500",
   accentColour: "#111827",
   logoUrl: "",

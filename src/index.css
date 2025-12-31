@@ -14,8 +14,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 215 25% 15%;
 
-    /* Primary: Deep Trust Blue */
-    --primary: 213 80% 35%;
+    /* Primary: Light Professional Blue */
+    --primary: 205 85% 50%;
     --primary-foreground: 0 0% 100%;
 
     /* Secondary: Slate Professional */
@@ -35,16 +35,16 @@
 
     --border: 214 20% 88%;
     --input: 214 20% 88%;
-    --ring: 213 80% 35%;
+    --ring: 205 85% 50%;
 
     --radius: 0.625rem;
 
     /* Custom tokens for trade service aesthetic */
-    --hero-gradient: linear-gradient(135deg, hsl(213, 80%, 30%) 0%, hsl(213, 75%, 20%) 100%);
-    --hero-overlay: linear-gradient(180deg, hsla(213, 80%, 15%, 0.9) 0%, hsla(213, 80%, 20%, 0.85) 100%);
+    --hero-gradient: linear-gradient(135deg, hsl(205, 85%, 45%) 0%, hsl(205, 80%, 35%) 100%);
+    --hero-overlay: linear-gradient(180deg, hsla(205, 85%, 25%, 0.85) 0%, hsla(205, 85%, 30%, 0.8) 100%);
     --cta-gradient: linear-gradient(135deg, hsl(45, 95%, 50%) 0%, hsl(40, 95%, 45%) 100%);
-    --card-shadow: 0 4px 20px -4px hsla(213, 80%, 35%, 0.12);
-    --card-shadow-hover: 0 8px 30px -6px hsla(213, 80%, 35%, 0.2);
+    --card-shadow: 0 4px 20px -4px hsla(205, 85%, 50%, 0.12);
+    --card-shadow-hover: 0 8px 30px -6px hsla(205, 85%, 50%, 0.2);
     
     /* Trust badge colors */
     --trust-green: 142 70% 35%;
@@ -70,7 +70,7 @@
     --popover: 215 25% 13%;
     --popover-foreground: 210 15% 95%;
 
-    --primary: 213 75% 55%;
+    --primary: 205 85% 60%;
     --primary-foreground: 215 25% 10%;
 
     --secondary: 215 20% 20%;
@@ -88,10 +88,10 @@
 
     --border: 215 20% 22%;
     --input: 215 20% 22%;
-    --ring: 213 75% 55%;
+    --ring: 205 85% 60%;
 
-    --hero-gradient: linear-gradient(135deg, hsl(213, 70%, 20%) 0%, hsl(213, 75%, 12%) 100%);
-    --hero-overlay: linear-gradient(180deg, hsla(213, 70%, 8%, 0.95) 0%, hsla(213, 70%, 12%, 0.9) 100%);
+    --hero-gradient: linear-gradient(135deg, hsl(205, 80%, 30%) 0%, hsl(205, 85%, 20%) 100%);
+    --hero-overlay: linear-gradient(180deg, hsla(205, 80%, 15%, 0.9) 0%, hsla(205, 85%, 18%, 0.85) 100%);
     --card-shadow: 0 4px 20px -4px hsla(0, 0%, 0%, 0.4);
     --card-shadow-hover: 0 8px 30px -6px hsla(0, 0%, 0%, 0.5);
 
@@ -249,10 +249,10 @@
 /* Reduce paint complexity on mobile */
 @media (max-width: 768px) {
   .card-elevated {
-    box-shadow: 0 2px 8px -2px hsla(213, 80%, 35%, 0.1);
+    box-shadow: 0 2px 8px -2px hsla(205, 85%, 50%, 0.1);
   }
   
   .card-elevated:hover {
-    box-shadow: 0 2px 8px -2px hsla(213, 80%, 35%, 0.1);
+    box-shadow: 0 2px 8px -2px hsla(205, 85%, 50%, 0.1);
   }
 }
