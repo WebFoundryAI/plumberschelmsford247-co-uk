@@ -69,7 +69,7 @@ const BASE_URL = "https://manchesterblockeddrain.co.uk";
 
 function formatDate(_date: Date): string {
   // Return current date for sitemap freshness
-  return "2025-12-28";
+  return "2025-12-31";
 }
 
 function generateUrlEntry(

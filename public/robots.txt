@@ -1,5 +1,6 @@
 # Blocked Drains Manchester - robots.txt
 # https://manchesterblockeddrain.co.uk
+# Last updated: 2025-12-31
 
 # Standard search crawlers
 User-agent: Googlebot
@@ -24,7 +25,7 @@ Allow: /
 User-agent: LinkedInBot
 Allow: /
 
-# AI crawlers - allowed
+# AI crawlers - allowed (for GEO/AI search visibility)
 User-agent: GPTBot
 Allow: /
 
@@ -37,11 +38,20 @@ Allow: /
 User-agent: Anthropic-AI
 Allow: /
 
-# AI crawlers - blocked (training only)
 User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# AI crawlers - blocked (training scrapers only)
+User-agent: CCBot
 Disallow: /
 
-User-agent: CCBot
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: cohere-ai
 Disallow: /
 
 # Default rule for all other crawlers
@@ -51,6 +61,13 @@ Disallow: /admin
 Disallow: /admin/*
 Disallow: /login
 Disallow: /reset-password
+Disallow: /status
+
+# Crawl-delay for polite bots
+Crawl-delay: 1
 
 # Sitemap location
 Sitemap: https://manchesterblockeddrain.co.uk/sitemap.xml
+
+# Host preference (non-www HTTPS)
+Host: https://manchesterblockeddrain.co.uk
