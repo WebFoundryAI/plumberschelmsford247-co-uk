@@ -1,0 +1,438 @@
+/* Chester Plumber Near Me - Stylesheet */
+/* Color scheme: Forest Green (#2d5a27) */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.site-header {
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-top {
+    background: #2d5a27;
+    color: #fff;
+    padding: 8px 0;
+}
+
+.header-top .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.emergency-banner {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.header-phone {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.main-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2d5a27;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #2d5a27;
+}
+
+.cta-button {
+    background: #2d5a27;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.cta-button:hover {
+    background: #234a1f;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #2d5a27 0%, #3d7a35 100%);
+    color: #fff;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    opacity: 0.95;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Page Hero */
+.page-hero {
+    background: linear-gradient(135deg, #2d5a27 0%, #3d7a35 100%);
+    color: #fff;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.page-hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.emergency-hero {
+    background: linear-gradient(135deg, #c41e3a 0%, #e63946 100%);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background: #fff;
+    color: #2d5a27;
+}
+
+.btn-primary:hover {
+    background: #f0f0f0;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.btn-large {
+    padding: 15px 35px;
+    font-size: 1.1rem;
+}
+
+.btn-outline {
+    background: transparent;
+    color: #2d5a27;
+    border: 2px solid #2d5a27;
+}
+
+.btn-outline:hover {
+    background: #2d5a27;
+    color: #fff;
+}
+
+/* Content Sections */
+section {
+    padding: 60px 0;
+}
+
+.content-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #2d5a27;
+}
+
+.content-section h3 {
+    font-size: 1.4rem;
+    margin: 30px 0 15px;
+    color: #333;
+}
+
+.content-section p {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.content-section ul, .content-section ol {
+    margin: 15px 0 25px 25px;
+}
+
+.content-section li {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Services Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.service-card {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 4px solid #2d5a27;
+}
+
+.service-card h3 {
+    margin-bottom: 15px;
+}
+
+.service-card h3 a {
+    color: #2d5a27;
+    text-decoration: none;
+}
+
+.service-card h3 a:hover {
+    text-decoration: underline;
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.feature {
+    text-align: center;
+    padding: 25px;
+}
+
+.feature h3 {
+    color: #2d5a27;
+    margin-bottom: 10px;
+}
+
+/* Areas List */
+.areas-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+}
+
+.areas-list li a {
+    color: #2d5a27;
+    text-decoration: none;
+}
+
+.areas-list li a:hover {
+    text-decoration: underline;
+}
+
+.locations-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+}
+
+.locations-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* FAQ Section */
+.faq-section {
+    background: #f8f9fa;
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 30px auto 0;
+}
+
+.faq-item {
+    background: #fff;
+    padding: 25px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.faq-item h3 {
+    color: #2d5a27;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+/* CTA Section */
+.cta-section {
+    background: #2d5a27;
+    color: #fff;
+    text-align: center;
+}
+
+.cta-section h2 {
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.cta-section p {
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 25px;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.emergency-cta {
+    background: linear-gradient(135deg, #c41e3a 0%, #e63946 100%);
+}
+
+/* Legal Content */
+.legal-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.legal-content h2 {
+    font-size: 1.4rem;
+    margin: 30px 0 15px;
+}
+
+/* Footer */
+.site-footer {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 50px 0 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h4 {
+    margin-bottom: 20px;
+    color: #2d5a27;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section li {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: #fff;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    text-align: center;
+    color: #888;
+}
+
+/* Contact Info */
+.contact-info p {
+    margin-bottom: 12px;
+}
+
+.contact-info a {
+    color: #2d5a27;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1, .page-hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 40px 0;
+    }
+}

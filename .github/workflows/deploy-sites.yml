@@ -1,0 +1,333 @@
+name: Deploy Site Content to Repositories
+
+on:
+  workflow_dispatch:
+    inputs:
+      site:
+        description: 'Site to deploy (or "all" for all sites)'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - bristolemergencyplumber.co.uk
+          - nottinghamplumberservices.co.uk
+          - stockportplumbercheshire.co.uk
+          - stokeplumbersandboilers.co.uk
+          - bath-plumbers.co.uk
+          - chesterplumbernearme.co.uk
+          - greatyarmouthplumbers.co.uk
+          - plumberspoole.co.uk
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy Bristol Emergency Plumber
+        if: inputs.site == 'all' || inputs.site == 'bristolemergencyplumber.co.uk'
+        env:
+          GH_TOKEN: ${{ secrets.REPO_CREATE_TOKEN }}
+        run: |
+          DOMAIN="bristolemergencyplumber.co.uk"
+          SITE_DIR="sites/$DOMAIN"
+
+          if [ ! -d "$SITE_DIR" ]; then
+            echo "Site directory not found: $SITE_DIR"
+            exit 1
+          fi
+
+          echo "Deploying $DOMAIN..."
+
+          TEMP_DIR=$(mktemp -d)
+          git clone "https://x-access-token:${GH_TOKEN}@github.com/WebFoundryAI/$DOMAIN.git" "$TEMP_DIR/$DOMAIN"
+
+          # Remove old files (except .git)
+          find "$TEMP_DIR/$DOMAIN" -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+
+          # Copy new files
+          cp -r "$SITE_DIR"/* "$TEMP_DIR/$DOMAIN/"
+
+          cd "$TEMP_DIR/$DOMAIN"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+
+          if git diff --staged --quiet; then
+            echo "No changes to deploy for $DOMAIN"
+          else
+            git commit -m "Update site content"
+            git push origin main
+            echo "Deployed $DOMAIN successfully"
+          fi
+
+          cd -
+          rm -rf "$TEMP_DIR"
+
+      - name: Deploy Nottingham Plumber Services
+        if: inputs.site == 'all' || inputs.site == 'nottinghamplumberservices.co.uk'
+        env:
+          GH_TOKEN: ${{ secrets.REPO_CREATE_TOKEN }}
+        run: |
+          DOMAIN="nottinghamplumberservices.co.uk"
+          SITE_DIR="sites/$DOMAIN"
+
+          if [ ! -d "$SITE_DIR" ]; then
+            echo "Site directory not found: $SITE_DIR - skipping"
+            exit 0
+          fi
+
+          echo "Deploying $DOMAIN..."
+
+          TEMP_DIR=$(mktemp -d)
+          git clone "https://x-access-token:${GH_TOKEN}@github.com/WebFoundryAI/$DOMAIN.git" "$TEMP_DIR/$DOMAIN"
+
+          find "$TEMP_DIR/$DOMAIN" -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          cp -r "$SITE_DIR"/* "$TEMP_DIR/$DOMAIN/"
+
+          cd "$TEMP_DIR/$DOMAIN"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+
+          if git diff --staged --quiet; then
+            echo "No changes to deploy for $DOMAIN"
+          else
+            git commit -m "Update site content"
+            git push origin main
+            echo "Deployed $DOMAIN successfully"
+          fi
+
+          cd -
+          rm -rf "$TEMP_DIR"
+
+      - name: Deploy Stockport Plumber
+        if: inputs.site == 'all' || inputs.site == 'stockportplumbercheshire.co.uk'
+        env:
+          GH_TOKEN: ${{ secrets.REPO_CREATE_TOKEN }}
+        run: |
+          DOMAIN="stockportplumbercheshire.co.uk"
+          SITE_DIR="sites/$DOMAIN"
+
+          if [ ! -d "$SITE_DIR" ]; then
+            echo "Site directory not found: $SITE_DIR - skipping"
+            exit 0
+          fi
+
+          echo "Deploying $DOMAIN..."
+
+          TEMP_DIR=$(mktemp -d)
+          git clone "https://x-access-token:${GH_TOKEN}@github.com/WebFoundryAI/$DOMAIN.git" "$TEMP_DIR/$DOMAIN"
+
+          find "$TEMP_DIR/$DOMAIN" -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          cp -r "$SITE_DIR"/* "$TEMP_DIR/$DOMAIN/"
+
+          cd "$TEMP_DIR/$DOMAIN"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+
+          if git diff --staged --quiet; then
+            echo "No changes to deploy for $DOMAIN"
+          else
+            git commit -m "Update site content"
+            git push origin main
+            echo "Deployed $DOMAIN successfully"
+          fi
+
+          cd -
+          rm -rf "$TEMP_DIR"
+
+      - name: Deploy Stoke Plumbers and Boilers
+        if: inputs.site == 'all' || inputs.site == 'stokeplumbersandboilers.co.uk'
+        env:
+          GH_TOKEN: ${{ secrets.REPO_CREATE_TOKEN }}
+        run: |
+          DOMAIN="stokeplumbersandboilers.co.uk"
+          SITE_DIR="sites/$DOMAIN"
+
+          if [ ! -d "$SITE_DIR" ]; then
+            echo "Site directory not found: $SITE_DIR - skipping"
+            exit 0
+          fi
+
+          echo "Deploying $DOMAIN..."
+
+          TEMP_DIR=$(mktemp -d)
+          git clone "https://x-access-token:${GH_TOKEN}@github.com/WebFoundryAI/$DOMAIN.git" "$TEMP_DIR/$DOMAIN"
+
+          find "$TEMP_DIR/$DOMAIN" -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          cp -r "$SITE_DIR"/* "$TEMP_DIR/$DOMAIN/"
+
+          cd "$TEMP_DIR/$DOMAIN"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+
+          if git diff --staged --quiet; then
+            echo "No changes to deploy for $DOMAIN"
+          else
+            git commit -m "Update site content"
+            git push origin main
+            echo "Deployed $DOMAIN successfully"
+          fi
+
+          cd -
+          rm -rf "$TEMP_DIR"
+
+      - name: Deploy Bath Plumbers
+        if: inputs.site == 'all' || inputs.site == 'bath-plumbers.co.uk'
+        env:
+          GH_TOKEN: ${{ secrets.REPO_CREATE_TOKEN }}
+        run: |
+          DOMAIN="bath-plumbers.co.uk"
+          SITE_DIR="sites/$DOMAIN"
+
+          if [ ! -d "$SITE_DIR" ]; then
+            echo "Site directory not found: $SITE_DIR - skipping"
+            exit 0
+          fi
+
+          echo "Deploying $DOMAIN..."
+
+          TEMP_DIR=$(mktemp -d)
+          git clone "https://x-access-token:${GH_TOKEN}@github.com/WebFoundryAI/$DOMAIN.git" "$TEMP_DIR/$DOMAIN"
+
+          find "$TEMP_DIR/$DOMAIN" -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          cp -r "$SITE_DIR"/* "$TEMP_DIR/$DOMAIN/"
+
+          cd "$TEMP_DIR/$DOMAIN"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+
+          if git diff --staged --quiet; then
+            echo "No changes to deploy for $DOMAIN"
+          else
+            git commit -m "Update site content"
+            git push origin main
+            echo "Deployed $DOMAIN successfully"
+          fi
+
+          cd -
+          rm -rf "$TEMP_DIR"
+
+      - name: Deploy Chester Plumber
+        if: inputs.site == 'all' || inputs.site == 'chesterplumbernearme.co.uk'
+        env:
+          GH_TOKEN: ${{ secrets.REPO_CREATE_TOKEN }}
+        run: |
+          DOMAIN="chesterplumbernearme.co.uk"
+          SITE_DIR="sites/$DOMAIN"
+
+          if [ ! -d "$SITE_DIR" ]; then
+            echo "Site directory not found: $SITE_DIR - skipping"
+            exit 0
+          fi
+
+          echo "Deploying $DOMAIN..."
+
+          TEMP_DIR=$(mktemp -d)
+          git clone "https://x-access-token:${GH_TOKEN}@github.com/WebFoundryAI/$DOMAIN.git" "$TEMP_DIR/$DOMAIN"
+
+          find "$TEMP_DIR/$DOMAIN" -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          cp -r "$SITE_DIR"/* "$TEMP_DIR/$DOMAIN/"
+
+          cd "$TEMP_DIR/$DOMAIN"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+
+          if git diff --staged --quiet; then
+            echo "No changes to deploy for $DOMAIN"
+          else
+            git commit -m "Update site content"
+            git push origin main
+            echo "Deployed $DOMAIN successfully"
+          fi
+
+          cd -
+          rm -rf "$TEMP_DIR"
+
+      - name: Deploy Great Yarmouth Plumbers
+        if: inputs.site == 'all' || inputs.site == 'greatyarmouthplumbers.co.uk'
+        env:
+          GH_TOKEN: ${{ secrets.REPO_CREATE_TOKEN }}
+        run: |
+          DOMAIN="greatyarmouthplumbers.co.uk"
+          SITE_DIR="sites/$DOMAIN"
+
+          if [ ! -d "$SITE_DIR" ]; then
+            echo "Site directory not found: $SITE_DIR - skipping"
+            exit 0
+          fi
+
+          echo "Deploying $DOMAIN..."
+
+          TEMP_DIR=$(mktemp -d)
+          git clone "https://x-access-token:${GH_TOKEN}@github.com/WebFoundryAI/$DOMAIN.git" "$TEMP_DIR/$DOMAIN"
+
+          find "$TEMP_DIR/$DOMAIN" -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          cp -r "$SITE_DIR"/* "$TEMP_DIR/$DOMAIN/"
+
+          cd "$TEMP_DIR/$DOMAIN"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+
+          if git diff --staged --quiet; then
+            echo "No changes to deploy for $DOMAIN"
+          else
+            git commit -m "Update site content"
+            git push origin main
+            echo "Deployed $DOMAIN successfully"
+          fi
+
+          cd -
+          rm -rf "$TEMP_DIR"
+
+      - name: Deploy Plumbers Poole
+        if: inputs.site == 'all' || inputs.site == 'plumberspoole.co.uk'
+        env:
+          GH_TOKEN: ${{ secrets.REPO_CREATE_TOKEN }}
+        run: |
+          DOMAIN="plumberspoole.co.uk"
+          SITE_DIR="sites/$DOMAIN"
+
+          if [ ! -d "$SITE_DIR" ]; then
+            echo "Site directory not found: $SITE_DIR - skipping"
+            exit 0
+          fi
+
+          echo "Deploying $DOMAIN..."
+
+          TEMP_DIR=$(mktemp -d)
+          git clone "https://x-access-token:${GH_TOKEN}@github.com/WebFoundryAI/$DOMAIN.git" "$TEMP_DIR/$DOMAIN"
+
+          find "$TEMP_DIR/$DOMAIN" -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          cp -r "$SITE_DIR"/* "$TEMP_DIR/$DOMAIN/"
+
+          cd "$TEMP_DIR/$DOMAIN"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+
+          if git diff --staged --quiet; then
+            echo "No changes to deploy for $DOMAIN"
+          else
+            git commit -m "Update site content"
+            git push origin main
+            echo "Deployed $DOMAIN successfully"
+          fi
+
+          cd -
+          rm -rf "$TEMP_DIR"
+
+      - name: Summary
+        run: |
+          echo "## Deployment Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Site(s) deployed: ${{ inputs.site }}" >> $GITHUB_STEP_SUMMARY
