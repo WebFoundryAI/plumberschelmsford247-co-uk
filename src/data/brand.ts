@@ -11,4 +11,10 @@ export const BRAND = {
   postcode: "M2 3WQ",
   tagline: "Fast, Reliable Drainage Solutions",
   emergencyAvailable: true,
+  socialProfiles: [
+    "https://www.facebook.com/BlockedDrainsManchester",
+    "https://twitter.com/DrainManchester",
+    "https://www.instagram.com/blockeddrains_manchester",
+    "https://www.linkedin.com/company/blocked-drains-manchester"
+  ]
 };
