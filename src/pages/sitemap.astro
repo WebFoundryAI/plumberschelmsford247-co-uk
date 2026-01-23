@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { BRAND } from '../data/brand';
+import { SERVICES } from '../data/services';
+import { LOCATIONS } from '../data/locations';
+
+const title = `Sitemap | ${BRAND.brandName}`;
+const description = `Complete sitemap for ${BRAND.brandName}. Browse all our drainage services, locations, and pages.`;
+
+const staticPages = [
+  { url: '/', name: 'Home' },
+  { url: '/services', name: 'All Services' },
+  { url: '/locations', name: 'All Areas' },
+  { url: '/about', name: 'About Us' },
+  { url: '/contact', name: 'Contact Us' },
+  { url: '/faq', name: 'FAQ' },
+  { url: '/privacy', name: 'Privacy Policy' },
+  { url: '/terms', name: 'Terms of Service' },
+  { url: '/cookies', name: 'Cookie Policy' },
+];
+
+const servicePages = SERVICES.map(service => ({
+  url: `/services/${service.slug}`,
+  name: service.name,
+}));
+
+const subServicePages = SERVICES.flatMap(service =>
+  (service.subServices || []).map(sub => ({
+    url: `/services/${service.slug}/${sub.slug}`,
+    name: `${sub.name} (${service.name})`,
+  }))
+);
+
+const locationPages = LOCATIONS.map(location => ({
+  url: `/locations/${location.slug}`,
+  name: location.name,
+}));
+
+const serviceLocationPages = LOCATIONS.flatMap(location =>
+  SERVICES.map(service => ({
+    url: `/locations/${location.slug}/${service.slug}`,
+    name: `${service.name} in ${location.name}`,
+  }))
+);
+
+const totalPages =
+  staticPages.length +
+  servicePages.length +
+  subServicePages.length +
+  locationPages.length +
+  serviceLocationPages.length;
+---
+
+<BaseLayout title={title} description={description} canonical="/sitemap">
+  <section class="section-padding">
+    <div class="container-wide px-4">
+      <h1 class="text-3xl font-bold mb-2">Sitemap</h1>
+      <p class="text-muted-foreground mb-8">Total pages: {totalPages}</p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Main Pages -->
+        <div>
+          <h2 class="text-xl font-semibold mb-4">Main Pages</h2>
+          <ul class="space-y-2">
+            {staticPages.map(page => (
+              <li>
+                <a href={page.url} class="text-primary hover:underline">
+                  {page.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h2 class="text-xl font-semibold mb-4">Services ({servicePages.length})</h2>
+          <ul class="space-y-2">
+            {servicePages.map(page => (
+              <li>
+                <a href={page.url} class="text-primary hover:underline">
+                  {page.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {subServicePages.length > 0 && (
+            <div class="mt-4">
+              <h3 class="font-medium mb-2">Sub-Services ({subServicePages.length})</h3>
+              <ul class="space-y-1 text-sm">
+                {subServicePages.map(page => (
+                  <li>
+                    <a href={page.url} class="text-primary hover:underline">
+                      {page.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        <!-- Locations -->
+        <div>
+          <h2 class="text-xl font-semibold mb-4">Areas We Cover ({locationPages.length})</h2>
+          <ul class="space-y-2">
+            {locationPages.map(page => (
+              <li>
+                <a href={page.url} class="text-primary hover:underline">
+                  {page.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Local Services -->
+      <div class="mt-12">
+        <h2 class="text-xl font-semibold mb-4">Local Services ({serviceLocationPages.length})</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {LOCATIONS.map(location => (
+            <div>
+              <h3 class="font-medium mb-2">{location.name}</h3>
+              <ul class="space-y-1 text-sm">
+                {SERVICES.map(service => (
+                  <li>
+                    <a
+                      href={`/locations/${location.slug}/${service.slug}`}
+                      class="text-primary hover:underline"
+                    >
+                      {service.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-border text-sm text-muted-foreground">
+        <p>
+          <a href="/sitemap.xml" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+            View XML Sitemap
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

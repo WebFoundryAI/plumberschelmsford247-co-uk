@@ -1,0 +1,266 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { BRAND } from '../data/brand';
+import { SERVICES } from '../data/services';
+import { LOCATIONS } from '../data/locations';
+import { GENERIC_FAQS } from '../data/faqs';
+import { HOME_INTRO } from '../data/staticContent';
+
+const title = `${BRAND.brandName} | Expert Blocked Drain Services in ${BRAND.primaryLocation}`;
+const description = `Professional drain unblocking and CCTV surveys in ${BRAND.serviceAreaLabel}. 24/7 emergency service, no call-out fee, fixed pricing. Call ${BRAND.phoneFormatted}`;
+
+// Priority service-in-location combinations for internal linking
+const priorityLinks = SERVICES.slice(0, 3).flatMap((service) =>
+  LOCATIONS.slice(0, 2).map((location) => ({
+    href: `/locations/${location.slug}/${service.slug}`,
+    label: `${service.name} in ${location.name}`,
+    icon: service.icon,
+  }))
+);
+---
+
+<BaseLayout title={title} description={description} canonical="/">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-overlay py-16 md:py-24">
+      <div class="container-wide px-4">
+        <div class="max-w-3xl">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            Expert Drain Services in {BRAND.primaryLocation}
+          </h1>
+          <p class="text-xl text-white/90 mb-8">
+            {BRAND.tagline}. Available 24/7 for emergencies across {BRAND.serviceAreaLabel}.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href={`tel:${BRAND.phone}`} class="btn-primary text-lg text-center">
+              Call {BRAND.phoneFormatted}
+            </a>
+            <a href="/contact" class="btn-outline border-white text-white hover:bg-white hover:text-primary text-center">
+              Get a Free Quote
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Badges -->
+  <section class="py-8 bg-muted/50">
+    <div class="container-wide px-4">
+      <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+        <div class="trust-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22,4 12,14.01 9,11.01"></polyline></svg>
+          No Call-Out Fee
+        </div>
+        <div class="trust-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12,6 12,12 16,14"></polyline></svg>
+          24/7 Emergency
+        </div>
+        <div class="trust-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          Fully Insured
+        </div>
+        <div class="trust-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          Fixed Pricing
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Introduction -->
+  <section class="section-padding">
+    <div class="container-wide px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          Professional Drainage Solutions
+        </h2>
+        <p class="text-lg text-muted-foreground leading-relaxed">
+          {HOME_INTRO}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="section-padding bg-muted/30">
+    <div class="container-wide px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Comprehensive drainage solutions for homes and businesses across {BRAND.serviceAreaLabel}
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {SERVICES.map((service) => (
+          <a
+            href={`/services/${service.slug}`}
+            class="bg-card p-6 rounded-xl card-elevated hover:scale-[1.02] transition-transform"
+          >
+            <span class="text-4xl mb-4 block">{service.icon}</span>
+            <h3 class="text-xl font-bold mb-2">{service.name}</h3>
+            <p class="text-muted-foreground text-sm">{service.shortLabel}</p>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="/services" class="btn-primary">
+          View All Services
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="section-padding">
+    <div class="container-wide px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Choose Us?</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><circle cx="12" cy="12" r="10"></circle><polyline points="12,6 12,12 16,14"></polyline></svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Fast Response</h3>
+          <p class="text-muted-foreground text-sm">Usually with you within 1-2 hours for emergencies</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">No Hidden Fees</h3>
+          <p class="text-muted-foreground text-sm">Fixed pricing quoted before work begins</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Experienced Team</h3>
+          <p class="text-muted-foreground text-sm">Fully trained and insured engineers</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22,4 12,14.01 9,11.01"></polyline></svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Guaranteed Work</h3>
+          <p class="text-muted-foreground text-sm">All work comes with a satisfaction guarantee</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Locations Grid -->
+  <section class="section-padding bg-muted/30">
+    <div class="container-wide px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Areas We Cover</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Professional drainage services across {BRAND.serviceAreaLabel}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-4xl mx-auto">
+        {LOCATIONS.map((location) => (
+          <a
+            href={`/locations/${location.slug}`}
+            class="flex items-center gap-2 p-3 bg-card rounded-lg card-elevated hover:scale-[1.02] transition-transform"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span class="font-medium text-sm">{location.name}</span>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="/locations" class="btn-primary">
+          View All Areas
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Services by Area -->
+  <section class="section-padding">
+    <div class="container-wide px-4">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold mb-2">
+          Popular Services by Area
+        </h2>
+        <p class="text-muted-foreground">
+          Quick links to our most requested services in your area
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+        {priorityLinks.map((link) => (
+          <a
+            href={link.href}
+            class="flex items-center gap-3 p-4 bg-card rounded-lg card-elevated hover:bg-muted/50 transition-colors group"
+          >
+            <span class="text-2xl">{link.icon}</span>
+            <span class="flex-1 font-medium text-sm">{link.label}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-muted-foreground group-hover:text-primary transition-colors"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-6">
+        <a href="/locations" class="inline-flex items-center gap-2 text-primary hover:underline">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          View all service areas
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-padding bg-muted/30">
+    <div class="container-wide px-4">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          {GENERIC_FAQS.map((faq) => (
+            <details class="bg-card rounded-lg card-elevated">
+              <summary class="p-4 cursor-pointer font-semibold hover:text-primary transition-colors">
+                {faq.question}
+              </summary>
+              <div class="px-4 pb-4 text-muted-foreground">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+        <div class="text-center mt-6">
+          <a href="/faq" class="text-primary hover:underline">
+            View all FAQs
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section-padding bg-primary text-primary-foreground">
+    <div class="container-wide px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Need Help With Your Drains?
+      </h2>
+      <p class="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
+        Our expert team is ready to help. Call now for a free quote or emergency assistance.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`tel:${BRAND.phone}`} class="bg-white text-primary font-semibold px-8 py-4 rounded-lg shadow-lg hover:bg-white/90 transition-all text-lg">
+          Call {BRAND.phoneFormatted}
+        </a>
+        <a href="/contact" class="border-2 border-white text-white font-semibold px-8 py-4 rounded-lg hover:bg-white hover:text-primary transition-all text-lg">
+          Request a Callback
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

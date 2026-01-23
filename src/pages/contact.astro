@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { BRAND } from '../data/brand';
+
+const title = `Contact Us | ${BRAND.brandName}`;
+const description = `Get in touch with ${BRAND.brandName} for drainage services in ${BRAND.serviceAreaLabel}. Call ${BRAND.phoneFormatted} or use our contact form.`;
+---
+
+<BaseLayout title={title} description={description} canonical="/contact">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-overlay py-16 md:py-20">
+      <div class="container-wide px-4 text-center text-white">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+        <p class="text-lg text-white/90 max-w-2xl mx-auto">
+          Get in touch for a free quote or emergency callout
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="section-padding">
+    <div class="container-wide px-4">
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Contact info -->
+        <div>
+          <h2 class="text-2xl font-bold mb-6">Contact Our Drainage Team</h2>
+          <p class="text-muted-foreground mb-8">
+            Whether you need an emergency callout or want to book a routine service, we're here to help. Contact us today for a free, no-obligation quote.
+          </p>
+
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="p-3 bg-primary/10 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-1">Phone</h3>
+                <a href={`tel:${BRAND.phone}`} class="text-lg text-primary hover:underline">
+                  {BRAND.phoneFormatted}
+                </a>
+                <p class="text-sm text-muted-foreground">Available 24/7 for emergencies</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="p-3 bg-primary/10 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-1">Email</h3>
+                <a href={`mailto:${BRAND.email}`} class="text-lg text-primary hover:underline">
+                  {BRAND.email}
+                </a>
+                <p class="text-sm text-muted-foreground">We'll respond within 24 hours</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="p-3 bg-primary/10 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-1">Address</h3>
+                <p>
+                  {BRAND.addressLine1}, {BRAND.addressLine2}<br />
+                  {BRAND.postcode}
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="p-3 bg-primary/10 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><circle cx="12" cy="12" r="10"></circle><polyline points="12,6 12,12 16,14"></polyline></svg>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-1">Hours</h3>
+                <p>
+                  <strong>Office:</strong> Mon-Fri 8am-6pm<br />
+                  <strong>Emergency:</strong> 24/7
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact CTA -->
+        <div class="bg-card p-6 md:p-8 rounded-xl card-elevated">
+          <h2 class="text-2xl font-bold mb-2">Request a Free Drainage Quote</h2>
+          <p class="text-muted-foreground mb-6">
+            Call us directly for the fastest response, or send us an email with details of your drainage issue.
+          </p>
+
+          <div class="space-y-4">
+            <a href={`tel:${BRAND.phone}`} class="btn-primary w-full text-center text-lg py-4 block">
+              <span class="flex items-center justify-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Call {BRAND.phoneFormatted}
+              </span>
+            </a>
+
+            <a href={`mailto:${BRAND.email}`} class="btn-outline w-full text-center text-lg py-4 block">
+              <span class="flex items-center justify-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                Email Us
+              </span>
+            </a>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-border">
+            <h3 class="font-semibold mb-3">What to include in your message:</h3>
+            <ul class="space-y-2 text-sm text-muted-foreground">
+              <li class="flex items-start gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-trust shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22,4 12,14.01 9,11.01"></polyline></svg>
+                Your name and contact details
+              </li>
+              <li class="flex items-start gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-trust shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22,4 12,14.01 9,11.01"></polyline></svg>
+                Property address and postcode
+              </li>
+              <li class="flex items-start gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-trust shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22,4 12,14.01 9,11.01"></polyline></svg>
+                Description of your drainage issue
+              </li>
+              <li class="flex items-start gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-trust shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22,4 12,14.01 9,11.01"></polyline></svg>
+                Whether it's an emergency
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
