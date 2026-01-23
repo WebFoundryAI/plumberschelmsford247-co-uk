@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { BRAND } from '../../../data/brand';
 import { SERVICES, getServiceBySlug, getSubServiceBySlug } from '../../../data/services';
 import { LOCATIONS } from '../../../data/locations';
+import { getSubServicePageSchema, getBreadcrumbSchema } from '../../../utils/schema';
 
 export function getStaticPaths() {
   const paths = [];
@@ -34,64 +35,20 @@ const description = `Professional ${subService.name.toLowerCase()} across ${BRAN
 
 const topLocations = LOCATIONS.slice(0, 4);
 const otherSubServices = service.subServices?.filter(s => s.slug !== subService.slug) || [];
+
+// Generate comprehensive schema for this sub-service page
+const pageSchema = getSubServicePageSchema(service, subService);
+const breadcrumbSchema = getBreadcrumbSchema([
+  { name: "Home", url: "/" },
+  { name: "Services", url: "/services" },
+  { name: service.name, url: `/services/${service.slug}` },
+  { name: subService.name, url: `/services/${service.slug}/${subService.slug}` }
+]);
 ---
 
-<BaseLayout title={title} description={description} canonical={`/services/${service.slug}/${subService.slug}`}>
-  <!-- Service Schema JSON-LD -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": subService.name,
-    "description": subService.description,
-    "provider": {
-      "@type": "LocalBusiness",
-      "@id": `https://${BRAND.domain}/#business`,
-      "name": BRAND.brandName
-    },
-    "areaServed": {
-      "@type": "AdministrativeArea",
-      "name": "Manchester and Greater Manchester"
-    },
-    "serviceType": subService.name,
-    "url": `https://${BRAND.domain}/services/${service.slug}/${subService.slug}`,
-    "isRelatedTo": {
-      "@type": "Service",
-      "name": service.name,
-      "url": `https://${BRAND.domain}/services/${service.slug}`
-    }
-  })} />
-
+<BaseLayout title={title} description={description} canonical={`/services/${service.slug}/${subService.slug}`} schema={pageSchema}>
   <!-- BreadcrumbList Schema -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": `https://${BRAND.domain}/`
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Services",
-        "item": `https://${BRAND.domain}/services`
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": service.name,
-        "item": `https://${BRAND.domain}/services/${service.slug}`
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "name": subService.name,
-        "item": `https://${BRAND.domain}/services/${service.slug}/${subService.slug}`
-      }
-    ]
-  })} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <!-- Hero Section -->
   <section class="hero-section">

@@ -5,6 +5,7 @@ import { LOCATIONS, getLocationBySlug } from '../../data/locations';
 import { SERVICES } from '../../data/services';
 import { getLocationFAQs } from '../../data/faqs';
 import { LOCATION_CONTENT } from '../../data/staticContent';
+import { getLocationPageSchema, getBreadcrumbSchema } from '../../utils/schema';
 
 export function getStaticPaths() {
   return LOCATIONS.map((location) => ({
@@ -28,9 +29,19 @@ const description = `Professional drain unblocking and repairs in ${location.nam
 const otherLocations = LOCATIONS.filter((l) => l.slug !== location.slug).slice(0, 4);
 const faqs = getLocationFAQs(location.name);
 const locationContent = LOCATION_CONTENT[location.slug] || `Need a reliable drainage specialist in ${location.name}? ${BRAND.brandName} provides fast, professional drainage services to homes and businesses throughout ${location.name} and the surrounding area.`;
+
+// Generate location-specific schema
+const pageSchema = getLocationPageSchema(location);
+const breadcrumbSchema = getBreadcrumbSchema([
+  { name: "Home", url: "/" },
+  { name: "Locations", url: "/locations" },
+  { name: location.name, url: `/locations/${location.slug}` }
+]);
 ---
 
-<BaseLayout title={title} description={description} canonical={`/locations/${location.slug}`}>
+<BaseLayout title={title} description={description} canonical={`/locations/${location.slug}`} schema={pageSchema}>
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="hero-overlay py-16 md:py-20">

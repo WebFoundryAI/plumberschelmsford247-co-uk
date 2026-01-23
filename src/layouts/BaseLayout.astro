@@ -3,23 +3,28 @@ import '../styles/global.css';
 import { BRAND } from '../data/brand';
 import { SERVICES } from '../data/services';
 import { LOCATIONS } from '../data/locations';
+import { getHomepageSchema, serializeSchema } from '../utils/schema';
 
 interface Props {
   title?: string;
   description?: string;
   canonical?: string;
   image?: string;
+  schema?: object | object[];
 }
 
 // Default SEO values as fallbacks
 const defaultTitle = `${BRAND.brandName} | 24/7 Drainage Services`;
 const defaultDescription = `Professional drain unblocking, CCTV surveys, and emergency drainage services across ${BRAND.serviceAreaLabel}. No call-out fee, fixed pricing. Call ${BRAND.phoneFormatted}.`;
 
-const { title = defaultTitle, description = defaultDescription, canonical, image } = Astro.props;
+const { title = defaultTitle, description = defaultDescription, canonical, image, schema } = Astro.props;
 const siteUrl = `https://${BRAND.domain}`;
 const canonicalUrl = canonical ? `${siteUrl}${canonical}` : Astro.url.href;
 const defaultOgImage = `${siteUrl}/images/og-default.jpg`;
 const ogImage = image ? `${siteUrl}${image}` : defaultOgImage;
+
+// Use provided schema or default to homepage schema
+const pageSchema = schema || getHomepageSchema();
 ---
 
 <!DOCTYPE html>
@@ -51,63 +56,8 @@ const ogImage = image ? `${siteUrl}${image}` : defaultOgImage;
   <meta name="twitter:image" content={ogImage} />
   <meta name="twitter:image:alt" content={title} />
 
-  <!-- JSON-LD LocalBusiness Structured Data -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": `${siteUrl}/#business`,
-    "name": BRAND.brandName,
-    "description": "Professional drain unblocking, CCTV surveys, and emergency drainage services across Manchester and Greater Manchester. Fast response, no call-out fee, 24/7 availability.",
-    "url": siteUrl,
-    "telephone": `+44${BRAND.phone.substring(1)}`,
-    "email": BRAND.email,
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": `${BRAND.addressLine1}, ${BRAND.addressLine2}`,
-      "addressLocality": "Manchester",
-      "addressRegion": "Greater Manchester",
-      "postalCode": BRAND.postcode,
-      "addressCountry": "GB"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 53.4808,
-      "longitude": -2.2426
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      "opens": "00:00",
-      "closes": "23:59"
-    },
-    "priceRange": "££",
-    "areaServed": {
-      "@type": "GeoCircle",
-      "geoMidpoint": {
-        "@type": "GeoCoordinates",
-        "latitude": 53.4808,
-        "longitude": -2.2426
-      },
-      "geoRadius": "30000"
-    },
-    "serviceArea": {
-      "@type": "AdministrativeArea",
-      "name": "Manchester and Greater Manchester"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Drainage Services",
-      "itemListElement": SERVICES.map((service) => ({
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": service.name,
-          "description": service.description
-        }
-      }))
-    },
-    "sameAs": BRAND.socialProfiles
-  })} />
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={serializeSchema(pageSchema)} />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

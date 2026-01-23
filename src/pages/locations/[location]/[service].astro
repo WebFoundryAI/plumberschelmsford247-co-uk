@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { BRAND } from '../../../data/brand';
 import { LOCATIONS, getLocationBySlug } from '../../../data/locations';
 import { SERVICES, getServiceBySlug } from '../../../data/services';
+import { getLocationServicePageSchema, getBreadcrumbSchema } from '../../../utils/schema';
 
 export function getStaticPaths() {
   const paths = [];
@@ -40,9 +41,20 @@ const benefits = [
   "24/7 emergency availability",
   "Fully trained and insured",
 ];
+
+// Generate location + service specific schema
+const pageSchema = getLocationServicePageSchema(location, service);
+const breadcrumbSchema = getBreadcrumbSchema([
+  { name: "Home", url: "/" },
+  { name: "Locations", url: "/locations" },
+  { name: location.name, url: `/locations/${location.slug}` },
+  { name: service.name, url: `/locations/${location.slug}/${service.slug}` }
+]);
 ---
 
-<BaseLayout title={title} description={description} canonical={`/locations/${location.slug}/${service.slug}`}>
+<BaseLayout title={title} description={description} canonical={`/locations/${location.slug}/${service.slug}`} schema={pageSchema}>
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="hero-overlay py-16 md:py-20">
