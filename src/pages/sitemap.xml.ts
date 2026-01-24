@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { BRAND } from '../data/brand';
 import { SERVICES } from '../data/services';
 import { LOCATIONS } from '../data/locations';
+import { BLOG_POSTS } from '../data/blog';
 
 // Generate at build time for static output
 export const prerender = true;
@@ -27,6 +28,16 @@ function generateSitemapUrls(): SitemapUrl[] {
   urls.push({ loc: '/contact', priority: 0.8, changefreq: 'monthly' });
   urls.push({ loc: '/about', priority: 0.7, changefreq: 'monthly' });
   urls.push({ loc: '/faq', priority: 0.7, changefreq: 'monthly' });
+
+  // Blog pages
+  urls.push({ loc: '/blog', priority: 0.8, changefreq: 'weekly' });
+  for (const post of BLOG_POSTS) {
+    urls.push({
+      loc: `/blog/${post.slug}`,
+      priority: 0.7,
+      changefreq: 'monthly',
+    });
+  }
 
   // Legal pages (lower priority)
   urls.push({ loc: '/privacy', priority: 0.3, changefreq: 'yearly' });
