@@ -282,3 +282,45 @@ export function getFAQSchema(faqs: Array<{ question: string; answer: string }>) 
     }))
   };
 }
+
+/**
+ * Blog article schema generator
+ */
+export function getBlogArticleSchema(post: {
+  slug: string;
+  title: string;
+  excerpt: string;
+  author: string;
+  publishDate: string;
+  updatedDate?: string;
+  category: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${siteUrl}/blog/${post.slug}/#article`,
+    "headline": post.title,
+    "description": post.excerpt,
+    "author": {
+      "@type": "Organization",
+      "name": post.author,
+      "@id": `${siteUrl}/#business`
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": BRAND.brandName,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/images/og-default.jpg`
+      }
+    },
+    "datePublished": post.publishDate,
+    "dateModified": post.updatedDate || post.publishDate,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/blog/${post.slug}`
+    },
+    "articleSection": post.category,
+    "inLanguage": "en-GB"
+  };
+}
