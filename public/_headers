@@ -1,5 +1,5 @@
 # Cache-Control Headers
-# Lovable/Netlify-style headers file
+# Netlify-style headers file
 
 # ============================================
 # SECURITY HEADERS (apply to all routes)
@@ -96,4 +96,3 @@
   Cache-Control: public, max-age=86400
 
 # API responses should not be cached by CDN
-# (These are handled by Supabase, not static hosting)

@@ -1,7 +1,9 @@
 # SEO Architecture Audit - manchesterblockeddrain.co.uk
 
-**Audit Date:** 2025-12-31  
-**Framework:** React/Vite CSR SPA on Lovable  
+> **⚠️ LEGACY DOCUMENT** - This audit was created for the previous React/Vite SPA version. The site has since been migrated to **Astro SSG** (Static Site Generation), which provides superior SEO with pre-rendered HTML. Many CSR-specific concerns in this document no longer apply.
+
+**Original Audit Date:** 2025-12-31
+**Framework:** ~~React/Vite CSR SPA~~ → **Astro SSG** (migrated Jan 2026)
 **Status:** ✅ Google-Compliant
 
 ---
@@ -262,10 +264,10 @@ Host: https://manchesterblockeddrain.co.uk
 
 For improved social media previews and AI crawler support:
 
-### Option A: Prerender.io (Recommended)
-- Works with Lovable out of the box
-- No code changes needed
-- Handles Facebook, Twitter, LinkedIn bots
+### Option A: Prerender.io (Legacy - Not needed with Astro)
+- Was recommended for CSR apps
+- No longer needed - Astro SSG pre-renders all pages
+- Social bots now receive full HTML content
 
 ### Option B: Cloudflare Worker
 - Self-hosted solution
