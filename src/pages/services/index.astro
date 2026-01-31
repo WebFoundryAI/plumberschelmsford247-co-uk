@@ -13,12 +13,12 @@ const description = `Full range of drainage services: blocked drains, CCTV surve
 
 const breadcrumbItems = [
   { name: "Home", url: "/" },
-  { name: "Services", url: "/services" }
+  { name: "Services", url: "/services/" }
 ];
 
 const breadcrumbSchema = getBreadcrumbSchema(breadcrumbItems);
 const webPageSchema = getWebPageSchema({
-  url: '/services',
+  url: '/services/',
   name: title,
   description: description,
   breadcrumb: breadcrumbItems
@@ -27,7 +27,7 @@ const webPageSchema = getWebPageSchema({
 const combinedPageSchema = [breadcrumbSchema, webPageSchema];
 ---
 
-<BaseLayout title={title} description={description} canonical="/services">
+<BaseLayout title={title} description={description} canonical="/services/">
   <!-- Page Schemas (Breadcrumb + WebPage) -->
   <script type="application/ld+json" set:html={serializeSchema(combinedPageSchema)} />
   <!-- Hero Section -->
@@ -67,7 +67,7 @@ const combinedPageSchema = [breadcrumbSchema, webPageSchema];
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {SERVICES.map((service) => (
           <a
-            href={`/services/${service.slug}`}
+            href={`/services/${service.slug}/`}
             class="bg-card p-6 rounded-xl card-elevated hover:scale-[1.02] transition-transform group"
           >
             <span class="text-5xl mb-4 block">{service.icon}</span>
@@ -113,7 +113,7 @@ const combinedPageSchema = [breadcrumbSchema, webPageSchema];
         <a href={`tel:${BRAND.phone}`} class="bg-white text-primary font-semibold px-8 py-4 rounded-lg shadow-lg hover:bg-white/90 transition-all text-lg">
           Call {BRAND.phoneFormatted}
         </a>
-        <a href="/contact" class="border-2 border-white text-white font-semibold px-8 py-4 rounded-lg hover:bg-white hover:text-primary transition-all text-lg">
+        <a href="/contact/" class="border-2 border-white text-white font-semibold px-8 py-4 rounded-lg hover:bg-white hover:text-primary transition-all text-lg">
           Get a Quote
         </a>
       </div>

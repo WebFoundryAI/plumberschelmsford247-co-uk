@@ -1,0 +1,38 @@
+# Cloudflare Worker Configuration for Trailing Slash Rewrite
+# This worker handles internal URL rewriting for trailing slashes
+
+name = "manchester-blocked-drain-trailing-slash-rewrite"
+type = "javascript"
+main = "src/worker.ts"
+
+# Cloudflare Account Configuration
+# IMPORTANT: Update these values for your account and domain
+account_id = ""  # Your Cloudflare Account ID
+workers_dev = false
+
+# Environment: Production
+[env.production]
+# Deployment route: applies this worker to all paths on the domain
+# Pattern: https://<domain>/*
+routes = [
+  { pattern = "manchesterblockeddrain.co.uk/*", zone_id = "" }  # Update with your Zone ID
+]
+
+# Environment: Development
+[env.development]
+vars = { ENVIRONMENT = "development" }
+routes = [
+  { pattern = "manchesterblockeddrain.co.uk/*", zone_id = "" }  # Update with your Zone ID
+]
+
+# Compatibility Date
+compatibility_date = "2024-12-20"
+
+# Build Configuration
+[build]
+command = "npm install && npm run build"
+cwd = "./"
+main = "dist/worker.js"
+
+[build.upload]
+format = "service-worker"

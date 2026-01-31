@@ -242,6 +242,68 @@ The site builds to static HTML/CSS/JS files in the `dist/` folder. Deploy to any
 
 Configure your DNS to point to your hosting provider and set up SSL.
 
+### Deploy Trailing-Slash Rewrite Worker
+
+This repository includes a Cloudflare Worker that internally rewrites requests to add trailing slashes for route-like URLs without emitting 3xx redirects. This ensures canonical trailing-slash URLs are served at status 200.
+
+#### Prerequisites
+
+1. A Cloudflare account with your domain configured
+2. `wrangler` CLI installed: `npm install -g @cloudflare/wrangler`
+
+#### Setup Steps
+
+1. **Retrieve your Cloudflare credentials:**
+   - Account ID: Found in Cloudflare Dashboard → Account → Account ID
+   - Zone ID: Found in Cloudflare Dashboard → Domain → API (under Zone) → Zone ID
+
+2. **Update `wrangler.toml`:**
+   ```toml
+   account_id = "your-account-id"
+
+   [env.production]
+   routes = [
+     { pattern = "manchesterblockeddrain.co.uk/*", zone_id = "your-zone-id" }
+   ]
+   ```
+
+3. **Authenticate with Cloudflare:**
+   ```bash
+   wrangler login
+   ```
+
+4. **Deploy the worker:**
+   ```bash
+   wrangler deploy --env production
+   ```
+
+5. **Verify deployment:**
+   The worker will now intercept requests and internally rewrite URLs like `/services` to `/services/` without returning a redirect.
+
+#### What the Worker Does
+
+- **Rewrites requests** to append `/` for route-like URLs
+- **Preserves querystrings** and URL fragments
+- **Does NOT rewrite** special files (`.xml`, `.txt`, `.js`, `.css`, `.png`, etc.)
+- **Does NOT emit 3xx redirects** - Returns the rewritten page at status 200
+- **Applies to all paths** matching the pattern in `wrangler.toml`
+
+#### Verification
+
+Test that the worker is functioning:
+
+```bash
+# Should return 200 (no redirect)
+curl -I https://manchesterblockeddrain.co.uk/services
+
+# Should also return 200 (canonical URL already has /)
+curl -I https://manchesterblockeddrain.co.uk/services/
+
+# Should return 200 for all valid routes
+curl -I https://manchesterblockeddrain.co.uk/locations/manchester
+curl -I https://manchesterblockeddrain.co.uk/blog
+```
+
 ---
 
 ## Project Structure

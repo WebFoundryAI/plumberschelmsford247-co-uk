@@ -25,7 +25,7 @@ const description = `Professional drain unblocking in Manchester. Emergency call
 // Priority service-in-location combinations for internal linking
 const priorityLinks = SERVICES.slice(0, 3).flatMap((service) =>
   LOCATIONS.slice(0, 2).map((location) => ({
-    href: `/locations/${location.slug}/${service.slug}`,
+    href: `/locations/${location.slug}/${service.slug}/`,
     label: `${service.name} in ${location.name}`,
     icon: service.icon,
   }))
@@ -52,7 +52,7 @@ const priorityLinks = SERVICES.slice(0, 3).flatMap((service) =>
             <a href={`tel:${BRAND.phone}`} class="btn-primary text-lg text-center">
               Call {BRAND.phoneFormatted}
             </a>
-            <a href="/contact" class="btn-outline border-white text-white hover:bg-white hover:text-primary text-center">
+            <a href="/contact/" class="btn-outline border-white text-white hover:bg-white hover:text-primary text-center">
               Get a Free Quote
             </a>
           </div>
@@ -112,7 +112,7 @@ const priorityLinks = SERVICES.slice(0, 3).flatMap((service) =>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {SERVICES.map((service) => (
           <a
-            href={`/services/${service.slug}`}
+            href={`/services/${service.slug}/`}
             class="bg-card p-6 rounded-xl card-elevated hover:scale-[1.02] transition-transform"
           >
             <span class="text-4xl mb-4 block">{service.icon}</span>
@@ -123,7 +123,7 @@ const priorityLinks = SERVICES.slice(0, 3).flatMap((service) =>
       </div>
 
       <div class="text-center mt-8">
-        <a href="/services" class="btn-primary">
+        <a href="/services/" class="btn-primary">
           View All Services
         </a>
       </div>
@@ -186,7 +186,7 @@ const priorityLinks = SERVICES.slice(0, 3).flatMap((service) =>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-4xl mx-auto">
         {LOCATIONS.map((location) => (
           <a
-            href={`/locations/${location.slug}`}
+            href={`/locations/${location.slug}/`}
             class="flex items-center gap-2 p-3 bg-card rounded-lg card-elevated hover:scale-[1.02] transition-transform"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
@@ -196,7 +196,7 @@ const priorityLinks = SERVICES.slice(0, 3).flatMap((service) =>
       </div>
 
       <div class="text-center mt-8">
-        <a href="/locations" class="btn-primary">
+        <a href="/locations/" class="btn-primary">
           View All Areas
         </a>
       </div>
@@ -227,7 +227,7 @@ const priorityLinks = SERVICES.slice(0, 3).flatMap((service) =>
         ))}
       </div>
       <div class="text-center mt-6">
-        <a href="/locations" class="inline-flex items-center gap-2 text-primary hover:underline">
+        <a href="/locations/" class="inline-flex items-center gap-2 text-primary hover:underline">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
           View all service areas
         </a>
@@ -253,7 +253,7 @@ const priorityLinks = SERVICES.slice(0, 3).flatMap((service) =>
           ))}
         </div>
         <div class="text-center mt-6">
-          <a href="/faq" class="text-primary hover:underline">
+          <a href="/faq/" class="text-primary hover:underline">
             View all FAQs
           </a>
         </div>
@@ -274,7 +274,7 @@ const priorityLinks = SERVICES.slice(0, 3).flatMap((service) =>
         <a href={`tel:${BRAND.phone}`} class="bg-white text-primary font-semibold px-8 py-4 rounded-lg shadow-lg hover:bg-white/90 transition-all text-lg">
           Call {BRAND.phoneFormatted}
         </a>
-        <a href="/contact" class="border-2 border-white text-white font-semibold px-8 py-4 rounded-lg hover:bg-white hover:text-primary transition-all text-lg">
+        <a href="/contact/" class="border-2 border-white text-white font-semibold px-8 py-4 rounded-lg hover:bg-white hover:text-primary transition-all text-lg">
           Request a Callback
         </a>
       </div>

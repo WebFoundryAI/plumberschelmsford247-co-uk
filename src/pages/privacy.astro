@@ -12,11 +12,11 @@ const today = new Date().toLocaleDateString('en-GB');
 
 const breadcrumbSchema = getBreadcrumbSchema([
   { name: "Home", url: "/" },
-  { name: "Privacy Policy", url: "/privacy" }
+  { name: "Privacy Policy", url: "/privacy/" }
 ]);
 ---
 
-<BaseLayout title={title} description={description} canonical="/privacy">
+<BaseLayout title={title} description={description} canonical="/privacy/">
   <!-- BreadcrumbList Schema -->
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
@@ -71,7 +71,7 @@ const breadcrumbSchema = getBreadcrumbSchema([
         <h2>6. Cookies</h2>
         <p>
           Our website uses cookies to improve your experience. See our
-          <a href="/cookies">Cookie Policy</a> for more details.
+          <a href="/cookies/">Cookie Policy</a> for more details.
         </p>
 
         <h2>7. Contact Us</h2>

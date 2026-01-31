@@ -13,41 +13,41 @@ const description = `Complete sitemap for ${BRAND.brandName}. Browse all drainag
 
 const breadcrumbSchema = getBreadcrumbSchema([
   { name: "Home", url: "/" },
-  { name: "Sitemap", url: "/sitemap" }
+  { name: "Sitemap", url: "/sitemap/" }
 ]);
 
 const staticPages = [
   { url: '/', name: 'Home' },
-  { url: '/services', name: 'All Services' },
-  { url: '/locations', name: 'All Locations' },
-  { url: '/about', name: 'About Us' },
-  { url: '/contact', name: 'Contact Us' },
-  { url: '/faq', name: 'FAQ' },
-  { url: '/privacy', name: 'Privacy Policy' },
-  { url: '/terms', name: 'Terms of Service' },
-  { url: '/cookies', name: 'Cookie Policy' },
+  { url: '/services/', name: 'All Services' },
+  { url: '/locations/', name: 'All Locations' },
+  { url: '/about/', name: 'About Us' },
+  { url: '/contact/', name: 'Contact Us' },
+  { url: '/faq/', name: 'FAQ' },
+  { url: '/privacy/', name: 'Privacy Policy' },
+  { url: '/terms/', name: 'Terms of Service' },
+  { url: '/cookies/', name: 'Cookie Policy' },
 ];
 
 const servicePages = SERVICES.map(service => ({
-  url: `/services/${service.slug}`,
+  url: `/services/${service.slug}/`,
   name: service.name,
 }));
 
 const subServicePages = SERVICES.flatMap(service =>
   (service.subServices || []).map(sub => ({
-    url: `/services/${service.slug}/${sub.slug}`,
+    url: `/services/${service.slug}/${sub.slug}/`,
     name: `${sub.name} (${service.name})`,
   }))
 );
 
 const locationPages = LOCATIONS.map(location => ({
-  url: `/locations/${location.slug}`,
+  url: `/locations/${location.slug}/`,
   name: location.name,
 }));
 
 const serviceLocationPages = LOCATIONS.flatMap(location =>
   SERVICES.map(service => ({
-    url: `/locations/${location.slug}/${service.slug}`,
+    url: `/locations/${location.slug}/${service.slug}/`,
     name: `${service.name} in ${location.name}`,
   }))
 );
@@ -60,7 +60,7 @@ const totalPages =
   serviceLocationPages.length;
 ---
 
-<BaseLayout title={title} description={description} canonical="/sitemap">
+<BaseLayout title={title} description={description} canonical="/sitemap/">
   <!-- BreadcrumbList Schema -->
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 

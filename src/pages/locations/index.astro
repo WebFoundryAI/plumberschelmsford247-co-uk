@@ -13,12 +13,12 @@ const description = `Professional drain services across Manchester, Salford, Bol
 
 const breadcrumbItems = [
   { name: "Home", url: "/" },
-  { name: "Locations", url: "/locations" }
+  { name: "Locations", url: "/locations/" }
 ];
 
 const breadcrumbSchema = getBreadcrumbSchema(breadcrumbItems);
 const webPageSchema = getWebPageSchema({
-  url: '/locations',
+  url: '/locations/',
   name: title,
   description: description,
   breadcrumb: breadcrumbItems
@@ -27,7 +27,7 @@ const webPageSchema = getWebPageSchema({
 const combinedPageSchema = [breadcrumbSchema, webPageSchema];
 ---
 
-<BaseLayout title={title} description={description} canonical="/locations" image="/og/locations-og.jpg">
+<BaseLayout title={title} description={description} canonical="/locations/" image="/og/locations-og.jpg">
   <!-- Page Schemas (Breadcrumb + WebPage) -->
   <script type="application/ld+json" set:html={serializeSchema(combinedPageSchema)} />
   <!-- Hero Section -->
@@ -81,7 +81,7 @@ const combinedPageSchema = [breadcrumbSchema, webPageSchema];
 
             <div class="grid md:grid-cols-3 gap-4 mb-8">
               <a
-                href={`/locations/${location.slug}/blocked-drains`}
+                href={`/locations/${location.slug}/blocked-drains/`}
                 class="p-4 bg-card rounded-lg border hover:border-primary transition-colors group"
               >
                 <h3 class="font-semibold text-lg group-hover:text-primary transition-colors">Blocked Drains {location.name}</h3>
@@ -89,7 +89,7 @@ const combinedPageSchema = [breadcrumbSchema, webPageSchema];
               </a>
 
               <a
-                href={`/locations/${location.slug}/cctv-drain-surveys`}
+                href={`/locations/${location.slug}/cctv-drain-surveys/`}
                 class="p-4 bg-card rounded-lg border hover:border-primary transition-colors group"
               >
                 <h3 class="font-semibold text-lg group-hover:text-primary transition-colors">CCTV Surveys {location.name}</h3>
@@ -97,7 +97,7 @@ const combinedPageSchema = [breadcrumbSchema, webPageSchema];
               </a>
 
               <a
-                href={`/locations/${location.slug}/emergency-drain-services`}
+                href={`/locations/${location.slug}/emergency-drain-services/`}
                 class="p-4 bg-card rounded-lg border hover:border-primary transition-colors group"
               >
                 <h3 class="font-semibold text-lg group-hover:text-primary transition-colors">Emergency Services {location.name}</h3>
@@ -106,7 +106,7 @@ const combinedPageSchema = [breadcrumbSchema, webPageSchema];
             </div>
 
             <a
-              href={`/locations/${location.slug}`}
+              href={`/locations/${location.slug}/`}
               class="inline-flex items-center gap-2 text-primary font-semibold hover:underline"
             >
               View all {location.name} drainage services
@@ -131,7 +131,7 @@ const combinedPageSchema = [breadcrumbSchema, webPageSchema];
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
         {LOCATIONS.map((location) => (
           <a
-            href={`/locations/${location.slug}`}
+            href={`/locations/${location.slug}/`}
             class="flex items-center gap-2 p-4 bg-card rounded-lg card-elevated hover:scale-[1.02] transition-transform"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>

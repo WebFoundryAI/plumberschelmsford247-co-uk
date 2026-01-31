@@ -9,7 +9,7 @@ const description = `Expert drainage tips, advice, and guides from Manchester's 
 
 const breadcrumbSchema = getBreadcrumbSchema([
   { name: "Home", url: "/" },
-  { name: "Blog", url: "/blog" }
+  { name: "Blog", url: "/blog/" }
 ]);
 
 const categories = getAllCategories();
@@ -28,7 +28,7 @@ function formatDate(dateString: string): string {
 }
 ---
 
-<BaseLayout title={title} description={description} canonical="/blog">
+<BaseLayout title={title} description={description} canonical="/blog/">
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <!-- Hero Section -->
@@ -72,7 +72,7 @@ function formatDate(dateString: string): string {
                 </span>
               </div>
               <h2 class="text-xl font-bold mb-3 line-clamp-2">
-                <a href={`/blog/${post.slug}`} class="hover:text-primary transition-colors">
+                <a href={`/blog/${post.slug}/`} class="hover:text-primary transition-colors">
                   {post.title}
                 </a>
               </h2>
@@ -83,7 +83,7 @@ function formatDate(dateString: string): string {
                 <time datetime={post.publishDate} class="text-xs text-muted-foreground">
                   {formatDate(post.publishDate)}
                 </time>
-                <a href={`/blog/${post.slug}`} class="text-primary text-sm font-medium hover:underline">
+                <a href={`/blog/${post.slug}/`} class="text-primary text-sm font-medium hover:underline">
                   Read more →
                 </a>
               </div>

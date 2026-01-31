@@ -21,33 +21,33 @@ interface SitemapUrl {
 function generateSitemapUrls(): SitemapUrl[] {
   const urls: SitemapUrl[] = [];
 
-  // Main pages
+  // Main pages (all with trailing slashes for canonicalization)
   urls.push({ loc: '/', priority: 1.0, changefreq: 'weekly' });
-  urls.push({ loc: '/services', priority: 0.9, changefreq: 'weekly' });
-  urls.push({ loc: '/locations', priority: 0.9, changefreq: 'weekly' });
-  urls.push({ loc: '/contact', priority: 0.8, changefreq: 'monthly' });
-  urls.push({ loc: '/about', priority: 0.7, changefreq: 'monthly' });
-  urls.push({ loc: '/faq', priority: 0.7, changefreq: 'monthly' });
+  urls.push({ loc: '/services/', priority: 0.9, changefreq: 'weekly' });
+  urls.push({ loc: '/locations/', priority: 0.9, changefreq: 'weekly' });
+  urls.push({ loc: '/contact/', priority: 0.8, changefreq: 'monthly' });
+  urls.push({ loc: '/about/', priority: 0.7, changefreq: 'monthly' });
+  urls.push({ loc: '/faq/', priority: 0.7, changefreq: 'monthly' });
 
   // Blog pages
-  urls.push({ loc: '/blog', priority: 0.8, changefreq: 'weekly' });
+  urls.push({ loc: '/blog/', priority: 0.8, changefreq: 'weekly' });
   for (const post of BLOG_POSTS) {
     urls.push({
-      loc: `/blog/${post.slug}`,
+      loc: `/blog/${post.slug}/`,
       priority: 0.7,
       changefreq: 'monthly',
     });
   }
 
   // Legal pages (lower priority)
-  urls.push({ loc: '/privacy', priority: 0.3, changefreq: 'yearly' });
-  urls.push({ loc: '/terms', priority: 0.3, changefreq: 'yearly' });
-  urls.push({ loc: '/cookies', priority: 0.3, changefreq: 'yearly' });
+  urls.push({ loc: '/privacy/', priority: 0.3, changefreq: 'yearly' });
+  urls.push({ loc: '/terms/', priority: 0.3, changefreq: 'yearly' });
+  urls.push({ loc: '/cookies/', priority: 0.3, changefreq: 'yearly' });
 
   // Service pages
   for (const service of SERVICES) {
     urls.push({
-      loc: `/services/${service.slug}`,
+      loc: `/services/${service.slug}/`,
       priority: 0.9,
       changefreq: 'weekly',
     });
@@ -56,7 +56,7 @@ function generateSitemapUrls(): SitemapUrl[] {
     if (service.subServices) {
       for (const subService of service.subServices) {
         urls.push({
-          loc: `/services/${service.slug}/${subService.slug}`,
+          loc: `/services/${service.slug}/${subService.slug}/`,
           priority: 0.8,
           changefreq: 'monthly',
         });
@@ -69,7 +69,7 @@ function generateSitemapUrls(): SitemapUrl[] {
     // Main location page (Manchester gets higher priority)
     const isManchester = location.slug === 'manchester';
     urls.push({
-      loc: `/locations/${location.slug}`,
+      loc: `/locations/${location.slug}/`,
       priority: isManchester ? 0.9 : 0.8,
       changefreq: 'weekly',
     });
@@ -77,7 +77,7 @@ function generateSitemapUrls(): SitemapUrl[] {
     // Location + Service combinations
     for (const service of SERVICES) {
       urls.push({
-        loc: `/locations/${location.slug}/${service.slug}`,
+        loc: `/locations/${location.slug}/${service.slug}/`,
         priority: isManchester ? 0.8 : 0.7,
         changefreq: 'monthly',
       });
