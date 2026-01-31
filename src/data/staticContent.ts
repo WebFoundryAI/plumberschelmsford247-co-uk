@@ -15,21 +15,21 @@ export const SERVICES_OVERVIEW = `At Blocked Drains Manchester, we provide a com
 export const HOME_INTRO = `Welcome to Blocked Drains Manchester, your trusted partner for comprehensive drain services in Manchester and Greater Manchester. We specialise in unblocking drains, carry out thorough drain cleaning, and provide drain repairs, ensuring your property remains safe and functional. With a commitment to reliability and speed, our experienced team is ready to respond to emergency callouts, so you can rest assured that help is just a phone call away. Whether it's a minor blockage or a more serious drainage issue, we're here to deliver effective solutions when you need them most.`;
 
 export const LOCATION_CONTENT: Record<string, string> = {
-  manchester: `Need a reliable drainage specialist in Manchester? Blocked Drains Manchester provides fast, professional drainage services to homes and businesses throughout Manchester and the surrounding area. From the city centre to the surrounding residential areas including Didsbury, Chorlton, Fallowfield, and Rusholme, we provide comprehensive drainage solutions for properties of all sizes.`,
+  manchester: `Need a reliable drainage specialist in Manchester? Blocked Drains Manchester provides fast, professional drainage services to homes and businesses throughout Manchester and the surrounding location. From the city centre to the surrounding residential locations including Didsbury, Chorlton, Fallowfield, and Rusholme, we provide comprehensive drainage solutions for properties of all sizes.`,
 
   salford: `Salford, located adjacent to Manchester city centre, is a vibrant area known for its mix of historic industrial heritage and modern developments including MediaCityUK. Need drainage help in Salford? Blocked Drains Manchester provides fast, reliable solutions to keep your drainage system in optimal condition.`,
 
   stockport: `Stockport, located to the south of Manchester, is a bustling market town known for its historic market hall and thriving residential communities. From the Victorian terraces of Heaton Moor to the leafy suburbs of Bramhall, we provide drainage services tailored to all property types.`,
 
-  altrincham: `Altrincham, situated in Trafford, is an affluent market town known for its excellent schools and attractive residential areas. Properties range from grand Victorian and Edwardian homes to modern developments, each presenting unique drainage considerations.`,
+  altrincham: `Altrincham, situated in Trafford, is an affluent market town known for its excellent schools and attractive residential locations. Properties range from grand Victorian and Edwardian homes to modern developments, each presenting unique drainage considerations.`,
 
-  bolton: `Bolton, a proud town in Greater Manchester with rich industrial heritage, is home to diverse residential areas from terraced houses to detached properties. Our team provides comprehensive drainage services across Bolton and surrounding areas.`,
+  bolton: `Bolton, a proud town in Greater Manchester with rich industrial heritage, is home to diverse residential locations from terraced houses to detached properties. Our team provides comprehensive drainage services across Bolton and surrounding locations.`,
 
-  oldham: `Oldham, situated on the western edge of the Pennines, is a diverse town with residential areas ranging from Victorian terraces to modern housing estates. We provide drainage services tailored to the unique challenges of this hillside location.`,
+  oldham: `Oldham, situated on the western edge of the Pennines, is a diverse town with residential locations ranging from Victorian terraces to modern housing estates. We provide drainage services tailored to the unique challenges of this hillside location.`,
 
-  rochdale: `Rochdale, a historic mill town in Greater Manchester, combines Victorian architectural heritage with modern development. Our drainage team provides reliable services throughout Rochdale and surrounding areas.`,
+  rochdale: `Rochdale, a historic mill town in Greater Manchester, combines Victorian architectural heritage with modern development. Our drainage team provides reliable services throughout Rochdale and surrounding locations.`,
 
-  sale: `Sale, located in Trafford, is a popular residential area known for its excellent transport links and community atmosphere. We provide drainage services for all property types in Sale and the surrounding area.`,
+  sale: `Sale, located in Trafford, is a popular residential area known for its excellent transport links and community atmosphere. We provide drainage services for all property types in Sale and the surrounding location.`,
 
   didsbury: `Didsbury, one of Manchester's most desirable suburbs, is known for its leafy streets, Victorian and Edwardian properties, and vibrant village atmosphere. Our team understands the unique drainage challenges of this area's mature housing stock.`,
 

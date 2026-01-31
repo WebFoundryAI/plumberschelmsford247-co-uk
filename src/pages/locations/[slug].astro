@@ -5,7 +5,8 @@ import { LOCATIONS, getLocationBySlug } from '../../data/locations';
 import { SERVICES } from '../../data/services';
 import { getLocationFAQs } from '../../data/faqs';
 import { LOCATION_CONTENT } from '../../data/staticContent';
-import { getLocationPageSchema, getBreadcrumbSchema } from '../../utils/schema';
+import { getLocationPageSchema, getBreadcrumbSchema, getFAQSchema } from '../../utils/schema';
+import { getLocationHubContent } from '../../data/locationHubContent';
 
 export function getStaticPaths() {
   return LOCATIONS.map((location) => ({
@@ -30,6 +31,9 @@ const otherLocations = LOCATIONS.filter((l) => l.slug !== location.slug).slice(0
 const faqs = getLocationFAQs(location.name);
 const locationContent = LOCATION_CONTENT[location.slug] || `Need a reliable drainage specialist in ${location.name}? ${BRAND.brandName} provides fast, professional drainage services to homes and businesses throughout ${location.name} and the surrounding area.`;
 
+// Get location hub content
+const hubContent = getLocationHubContent(location.slug);
+
 // Generate location-specific schema
 const pageSchema = getLocationPageSchema(location);
 const breadcrumbSchema = getBreadcrumbSchema([
@@ -37,11 +41,16 @@ const breadcrumbSchema = getBreadcrumbSchema([
   { name: "Locations", url: "/locations/" },
   { name: location.name, url: `/locations/${location.slug}/` }
 ]);
+
+// Generate FAQ schema for location-specific FAQs
+const faqPageSchema = hubContent ? getFAQSchema(faqs) : undefined;
 ---
 
 <BaseLayout title={title} description={description} canonical={`/locations/${location.slug}/`} schema={pageSchema}>
   <!-- BreadcrumbList Schema -->
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <!-- FAQ Page Schema (if available) -->
+  {faqPageSchema && <script type="application/ld+json" set:html={JSON.stringify(faqPageSchema)} />}
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="hero-overlay py-16 md:py-20">
@@ -88,6 +97,69 @@ const breadcrumbSchema = getBreadcrumbSchema([
             {locationContent}
           </p>
 
+          <!-- Map Section -->
+          {hubContent && (
+            <div class="mb-12">
+              <h3 class="text-xl font-bold mb-4">Map of {location.name}</h3>
+              <div class="rounded-lg overflow-hidden mb-3 border border-border">
+                <iframe
+                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyDummyKeyForDisplay&q=${encodeURIComponent(location.name)},${encodeURIComponent(location.countyOrRegion || 'Greater Manchester')}`}
+                  width="100%"
+                  height="400"
+                  style="border:0;"
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title={`Map of ${location.name}`}
+                  class="w-full h-full"
+                />
+              </div>
+              <p class="text-sm text-muted-foreground">
+                Serving homes and businesses across {location.name} and nearby locations.
+              </p>
+            </div>
+          )}
+
+          <!-- Drainage Profile Section -->
+          {hubContent && (
+            <div class="mb-12">
+              <h3 class="text-xl font-bold mb-4">Drainage Profile of {location.name}</h3>
+              <div class="text-muted-foreground space-y-4 prose prose-sm">
+                {hubContent.drainageProfile.split('\n\n').map((paragraph) => (
+                  <p>{paragraph}</p>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Local Landmarks Section -->
+          {hubContent && (
+            <div class="mb-12">
+              <h3 class="text-xl font-bold mb-4">Local Landmarks in {location.name}</h3>
+              <p class="text-muted-foreground mb-4">
+                {location.name} is home to many notable landmarks that define its character and community.
+              </p>
+              <ul class="grid sm:grid-cols-2 gap-2">
+                {hubContent.landmarks.map((landmark) => (
+                  <li class="flex items-start gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary mt-1 flex-shrink-0"><polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3"></polyline></svg>
+                    <span class="text-muted-foreground">{landmark}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- Case Study Section -->
+          {hubContent && (
+            <div class="mb-12 p-6 bg-muted rounded-lg border border-border">
+              <h3 class="text-xl font-bold mb-4">Recent Job in {location.name}</h3>
+              <p class="text-muted-foreground whitespace-pre-line">
+                {hubContent.caseStudy}
+              </p>
+            </div>
+          )}
+
           <!-- Services in this location -->
           <h3 class="text-xl font-bold mt-10 mb-4 flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
@@ -126,7 +198,7 @@ const breadcrumbSchema = getBreadcrumbSchema([
           </div>
 
           <!-- Other locations -->
-          <h3 class="text-xl font-bold mt-8 mb-4">Other Areas We Cover</h3>
+          <h3 class="text-xl font-bold mt-8 mb-4">Other Locations We Cover</h3>
           <div class="grid sm:grid-cols-2 gap-3">
             {otherLocations.map((l) => (
               <a

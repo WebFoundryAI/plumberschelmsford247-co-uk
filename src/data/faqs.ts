@@ -1,4 +1,5 @@
 import { BRAND } from './brand';
+import { getLocationHubContent } from './locationHubContent';
 
 export interface FAQ {
   question: string;
@@ -77,10 +78,19 @@ export function getServiceFAQs(serviceSlug: string): FAQ[] {
 }
 
 export function getLocationFAQs(locationName: string): FAQ[] {
+  // Map location name to slug for content lookup
+  const locationSlug = locationName.toLowerCase().replace(/\s+/g, '-');
+  const hubContent = getLocationHubContent(locationSlug);
+
+  if (hubContent && hubContent.localFAQs) {
+    return hubContent.localFAQs as FAQ[];
+  }
+
+  // Fallback to generic location FAQs if location-specific content not found
   return [
     {
       question: `Do you cover ${locationName}?`,
-      answer: `Yes, ${BRAND.brandName} provides comprehensive drainage services throughout ${locationName} and the surrounding areas of ${BRAND.serviceAreaLabel}.`,
+      answer: `Yes, ${BRAND.brandName} provides comprehensive drainage services throughout ${locationName} and the surrounding locations of ${BRAND.serviceAreaLabel}.`,
     },
     {
       question: `How quickly can you get to ${locationName}?`,
@@ -103,7 +113,7 @@ export const PAGE_FAQS: FAQ[] = [
     answer: "No, we do not charge a call-out fee. You only pay for the work that is carried out. We provide a clear quote before starting any job, so there are no unexpected costs."
   },
   {
-    question: "What areas do you cover?",
+    question: "What locations do you cover?",
     answer: "We provide drainage services throughout Manchester and Greater Manchester, including Salford, Stockport, Altrincham, Bolton, Oldham, Rochdale, Sale, Didsbury, and Chorlton."
   },
   {
