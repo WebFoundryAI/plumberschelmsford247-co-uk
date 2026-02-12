@@ -30,50 +30,49 @@
 # CACHE CONTROL HEADERS
 # ============================================
 
-# HTML documents - no caching (always revalidate)
-# Root and all page directories must be fresh on every request
+# HTML documents - cache for 1 day (static SSG site, safe to cache)
 /
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: public, max-age=86400, stale-while-revalidate=43200
 
 /*.html
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: public, max-age=86400, stale-while-revalidate=43200
 
 /index.html
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: public, max-age=86400, stale-while-revalidate=43200
 
-# All page routes - prevent caching on directory-style URLs
+# All page routes - cache for 1 day (pre-rendered static pages)
 /about/*
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: public, max-age=86400, stale-while-revalidate=43200
 
 /contact/*
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: public, max-age=86400, stale-while-revalidate=43200
 
 /services/*
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: public, max-age=86400, stale-while-revalidate=43200
 
 /locations/*
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: public, max-age=86400, stale-while-revalidate=43200
 
 /blog/*
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: public, max-age=86400, stale-while-revalidate=43200
 
 /faq/*
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: public, max-age=86400, stale-while-revalidate=43200
 
 /privacy/*
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: public, max-age=86400, stale-while-revalidate=43200
 
 /terms/*
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: public, max-age=86400, stale-while-revalidate=43200
 
 /cookies/*
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: public, max-age=86400, stale-while-revalidate=43200
 
 /sitemap/*
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: public, max-age=86400, stale-while-revalidate=43200
 
 /404/*
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: public, max-age=86400, stale-while-revalidate=43200
 
 # Static assets with content hashes (immutable - 1 year)
 /assets/*

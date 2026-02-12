@@ -1,26 +1,35 @@
 # Blocked Drains Manchester - robots.txt
 # https://manchesterblockeddrain.co.uk
-# Last updated: 2026-01-23
+# Last updated: 2026-02-12
 
 # ==============================================
-# AI CRAWLER POLICIES (Cloudflare-managed rules)
+# AI CRAWLER POLICIES
 # ==============================================
-# Allowed AI crawlers (for GEO/AI search visibility):
-#   - GPTBot, PerplexityBot, Claude-Web, Anthropic-AI
-#   - Google-Extended, Applebot-Extended
-# Blocked AI crawlers (training scrapers only):
-#   - CCBot, ChatGPT-User, cohere-ai
+# Allowed: All AI search crawlers for maximum visibility
+#   - GPTBot (ChatGPT search), Google-Extended (AI Overviews)
+#   - PerplexityBot, Claude-Web, Anthropic-AI, Applebot-Extended
+# Blocked: Training-only scrapers (no search benefit)
+#   - CCBot, cohere-ai
 # ==============================================
 
-# Block AI training scrapers
+# Block AI training scrapers (no search visibility benefit)
 User-agent: CCBot
-Disallow: /
-
-User-agent: ChatGPT-User
 Disallow: /
 
 User-agent: cohere-ai
 Disallow: /
+
+# Explicitly allow AI search crawlers
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+Disallow: /_astro/
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
 
 # ==============================================
 # DEFAULT RULES (all other crawlers)
@@ -33,7 +42,6 @@ Disallow: /login
 Disallow: /reset-password
 Disallow: /status
 Disallow: /_astro/
-Crawl-delay: 1
 
 # Sitemap location
 Sitemap: https://manchesterblockeddrain.co.uk/sitemap.xml

@@ -517,7 +517,7 @@ export function getWebPageSchema(options: {
   const webPageSchema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": `${options.url.startsWith('http') ? options.url : siteUrl + options.url}/#webpage`,
+    "@id": `${(options.url.startsWith('http') ? options.url : siteUrl + options.url).replace(/\/+$/, '')}/#webpage`,
     "url": options.url.startsWith('http') ? options.url : siteUrl + options.url,
     "name": options.name,
     "description": options.description,
