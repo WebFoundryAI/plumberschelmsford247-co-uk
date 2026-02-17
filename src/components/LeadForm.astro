@@ -43,13 +43,23 @@ const {
 
       <div>
         <label class="block font-semibold mb-1" for={`${formId}-postcode`}>Postcode</label>
-        <input class="w-full border border-border rounded-lg bg-white px-3 py-2" id={`${formId}-postcode`} name="postcode" type="text" required autocomplete="postal-code" />
+        <div class="grid grid-cols-[1fr_auto] gap-2">
+          <input class="w-full border border-border rounded-lg bg-white px-3 py-2" id={`${formId}-postcode`} name="postcode" type="text" required autocomplete="postal-code" />
+          <button class="btn-outline cursor-pointer" type="button" data-action="lookup">Find address</button>
+        </div>
         <p class="text-red-700 text-xs mt-0.5" id={`${formId}-postcode-error`}></p>
       </div>
     </div>
 
+    <div id={`${formId}-address-lookup-wrap`} class="hidden">
+      <label class="block font-semibold mb-1" for={`${formId}-address-select`}>Select your address</label>
+      <select class="w-full border border-border rounded-lg bg-white px-3 py-2" id={`${formId}-address-select`} name="addressLookup">
+        <option value="">Select an address</option>
+      </select>
+    </div>
+
     <div>
-      <label class="block font-semibold mb-1" for={`${formId}-address`}>Address (optional)</label>
+      <label class="block font-semibold mb-1" for={`${formId}-address`}>Address</label>
       <input class="w-full border border-border rounded-lg bg-white px-3 py-2" id={`${formId}-address`} name="address" type="text" autocomplete="street-address" placeholder="House number and street" />
       <p class="text-red-700 text-xs mt-0.5" id={`${formId}-address-error`}></p>
     </div>
@@ -96,6 +106,9 @@ const {
       const summary = document.getElementById(`${formId}-error-summary`);
       const errorList = document.getElementById(`${formId}-error-list`);
       const success = document.getElementById(`${formId}-success`);
+      const addressLookupWrap = document.getElementById(`${formId}-address-lookup-wrap`);
+      const addressSelect = formElement.querySelector('select[name="addressLookup"]');
+      const addressInput = formElement.querySelector('input[name="address"]');
 
       const setFieldError = (name, message) => {
         const field = formElement.querySelector(`[name="${name}"]`);
@@ -140,6 +153,62 @@ const {
 
         return errors.length === 0;
       };
+
+      // Postcode lookup
+      formElement.addEventListener('click', async (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) return;
+        const button = target.closest('button[data-action="lookup"]');
+        if (!button || !(button instanceof HTMLButtonElement)) return;
+
+        const postcodeInput = formElement.querySelector('input[name="postcode"]');
+        if (!(postcodeInput instanceof HTMLInputElement)) return;
+        const postcode = postcodeInput.value.trim();
+
+        if (!postcodeRegex.test(postcode)) {
+          setFieldError('postcode', 'Enter a valid UK postcode.');
+          return;
+        }
+
+        setFieldError('postcode', '');
+        const originalText = button.textContent;
+        button.textContent = 'Finding…';
+        button.disabled = true;
+
+        try {
+          const res = await fetch('/api/postcode-lookup?postcode=' + encodeURIComponent(postcode));
+          const data = await res.json();
+
+          if (!res.ok || !Array.isArray(data.addresses) || !data.addresses.length) {
+            setFieldError('postcode', data.error || 'No addresses found. Please type your address manually.');
+            return;
+          }
+
+          if (addressSelect instanceof HTMLSelectElement) {
+            addressSelect.innerHTML = '<option value="">Select an address</option>' +
+              data.addresses.map((a) => {
+                const val = a.line.replace(/"/g, '&quot;');
+                return '<option value="' + val + '">' + a.line + '</option>';
+              }).join('');
+          }
+          if (addressLookupWrap) addressLookupWrap.classList.remove('hidden');
+        } catch {
+          setFieldError('postcode', 'Could not find addresses. Please type your address manually.');
+        } finally {
+          button.textContent = originalText;
+          button.disabled = false;
+        }
+      });
+
+      // Auto-fill address when user selects from dropdown
+      if (addressSelect) {
+        addressSelect.addEventListener('change', (event) => {
+          const target = event.target;
+          if (target instanceof HTMLSelectElement && addressInput instanceof HTMLInputElement && target.value) {
+            addressInput.value = target.value;
+          }
+        });
+      }
 
       formElement.addEventListener('submit', async (event) => {
         event.preventDefault();

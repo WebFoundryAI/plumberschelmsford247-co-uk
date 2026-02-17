@@ -119,3 +119,8 @@
   from = "/api/lead"
   to = "/.netlify/functions/api-lead"
   status = 200
+
+[[redirects]]
+  from = "/api/postcode-lookup"
+  to = "/.netlify/functions/postcode-lookup"
+  status = 200
