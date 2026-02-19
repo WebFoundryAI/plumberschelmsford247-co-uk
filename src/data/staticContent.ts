@@ -35,3 +35,34 @@ export const LOCATION_CONTENT: Record<string, string> = {
 
   chorlton: `Chorlton, a vibrant and eclectic suburb of Manchester, is popular with young professionals and families. From Victorian terraces to modern apartments, we provide drainage services for all property types.`,
 };
+
+export const CONTACT_CONTENT = {
+  serviceAreaOverview:
+    "Our drainage engineers cover the whole of Greater Manchester, from Manchester city centre and Salford through to Stockport, Altrincham, Bolton, Oldham, Rochdale, Sale, Didsbury, and Chorlton. Whether you live in a Victorian terrace in Heaton Moor, a modern apartment at MediaCityUK, or a detached family home in Hale, we have engineers positioned to reach you quickly. We service both residential and commercial properties of all sizes, handling everything from a single blocked sink to complex drainage networks serving multi-unit buildings.",
+  businessHours:
+    "Our standard appointment slots run Monday to Saturday, 8am to 6pm. For planned work such as CCTV surveys, maintenance jetting, and non-urgent repairs, we offer flexible booking including early morning and weekend slots. For urgent drainage issues — flooding, sewage backup, or any situation posing a health risk — our emergency response team operates 24 hours a day, 7 days a week, 365 days a year, including bank holidays. Emergency calls are answered immediately by our dispatch team, not a call centre.",
+  whatToTellUs: [
+    "The type of problem you are experiencing — blocked drain, slow drainage, flooding, bad smell, or sewage backup",
+    "Which fixtures are affected — toilet, sink, bath, shower, external drain, or manhole",
+    "Your property type — house, flat, bungalow, or commercial premises",
+    "Whether the issue is inside the property, outside, or both",
+    "How long the problem has been occurring and whether it is getting worse",
+    "Your postcode, so we can provide an accurate response time estimate"
+  ],
+  emergencyInfo:
+    "If you are dealing with flooding, sewage backing up into your property, or any drainage failure that presents an immediate risk to health or property, call us straight away. Our emergency engineers carry pumping equipment, jetting gear, and repair materials, and are available around the clock. Do not wait for the problem to worsen — the sooner we arrive, the less damage your property will sustain.",
+  faqs: [
+    {
+      question: "How quickly will you respond after I get in touch?",
+      answer: "For online form submissions, we aim to call you back within 30 minutes during business hours. For phone enquiries, you speak to our team immediately. Emergency callouts are dispatched straight away, with engineers typically arriving within 60 to 90 minutes across Greater Manchester."
+    },
+    {
+      question: "Do you charge for callouts or quotes?",
+      answer: "No. We never charge a call-out fee. Our engineer will assess the situation on site and provide a clear, fixed-price quote before any work begins. You only pay if you choose to go ahead with the work."
+    },
+    {
+      question: "What areas do you cover?",
+      answer: "We cover all of Greater Manchester including Manchester, Salford, Stockport, Altrincham, Bolton, Oldham, Rochdale, Sale, Didsbury, Chorlton, and all surrounding neighbourhoods. If you are unsure whether we cover your area, call us and we will confirm."
+    }
+  ]
+};
