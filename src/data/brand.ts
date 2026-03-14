@@ -1,8 +1,8 @@
 export const BRAND = {
   brandName: "Plumbers Chelmsford 247",
   domain: "plumberschelmsford247.co.uk",
-  primaryLocation: "Manchester",
-  serviceAreaLabel: "Manchester and surrounding areas",
+  primaryLocation: "Chelmsford",
+  serviceAreaLabel: "Chelmsford and surrounding areas",
   phone: "01245203555",
   phoneFormatted: "01245 203555",
   email: "info@plumberschelmsford247.co.uk",

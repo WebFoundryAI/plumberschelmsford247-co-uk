@@ -1,6 +1,6 @@
-# Glasgow Drain Unblocker - robots.txt
-# https://glasgowdrainunblocker.co.uk
-# Last updated: 2026-03-05
+# Plumbers Chelmsford 247 - robots.txt
+# https://plumberschelmsford247.co.uk
+# Last updated: 2026-03-14
 
 # ==============================================
 # AI CRAWLER POLICIES
@@ -47,4 +47,4 @@ Disallow: /_astro/
 Sitemap: https://plumberschelmsford247.co.uk/sitemap.xml
 
 # Host preference (canonical non-www HTTPS)
-Host: https://glasgowdrainunblocker.co.uk
+Host: https://plumberschelmsford247.co.uk

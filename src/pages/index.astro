@@ -7,15 +7,15 @@ import { LOCATIONS } from '../data/locations';
 import { getCompleteHomepageSchema, getFAQSchema } from '../utils/schema';
 import { HOMEPAGE_FAQS } from '../data/faqs';
 
-const title = `Glasgow Drain Unblocker | 24/7 Emergency Unblocking`;
-const description = `Blocked drains in Glasgow fixed fast. Local engineers, fixed pricing, and 24/7 emergency drainage response. Call ${BRAND.phoneFormatted} or request a quote online.`;
+const title = `Plumbers Chelmsford 247 | 24/7 Emergency Drain Unblocking`;
+const description = `Blocked drains in Chelmsford fixed fast. Local engineers, fixed pricing, and 24/7 emergency drainage response. Call ${BRAND.phoneFormatted} or request a quote online.`;
 const homepageFaqs = HOMEPAGE_FAQS.slice(0, 6);
 const schema = [...getCompleteHomepageSchema(), getFAQSchema(homepageFaqs)];
 ---
 
 <BaseLayout title={title} description={description} canonical="/" schema={schema}>
   <HeroWithLeadForm
-    title="Glasgow Drain Unblocker — fast fixes, fair pricing"
+    title="Plumbers Chelmsford 247 — fast fixes, fair pricing"
     description="Get same-day drainage support from experienced local engineers. We clear blocked sinks, toilets, and outside drains with no hidden extras."
     formId="home-lead-form"
     source="homepage"
@@ -62,8 +62,8 @@ const schema = [...getCompleteHomepageSchema(), getFAQSchema(homepageFaqs)];
 
   <section class="section-padding bg-white">
     <div class="container-wide px-4">
-      <h2 class="text-2xl md:text-3xl font-bold mb-4">Coverage near Glasgow</h2>
-      <p class="text-muted-foreground mb-8">We cover Glasgow and surrounding areas including:</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-4">Coverage near Chelmsford</h2>
+      <p class="text-muted-foreground mb-8">We cover Chelmsford and surrounding areas including:</p>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {LOCATIONS.map((location) => (
           <a class="bg-card p-6 rounded-xl border border-border shadow-sm hover:shadow-md hover:border-primary transition-all no-underline text-foreground" href={`/locations/${location.slug}/`}>Blocked drains in {location.name}</a>

@@ -122,7 +122,7 @@ export function getLocationFAQs(locationName: string): FAQ[] {
 export const PAGE_FAQS: FAQ[] = [
   {
     question: "How quickly can you respond to an emergency callout?",
-    answer: 'We aim to respond to <a href="/services/emergency-drain-services/" class="text-primary hover:underline">emergency drainage callouts</a> within 60-90 minutes across <a href="/locations/glasgow/" class="text-primary hover:underline">Manchester</a> and the Greater Manchester. Our team operates around the clock, so help is available whenever you need it, day or night.'
+    answer: 'We aim to respond to <a href="/services/emergency-drain-services/" class="text-primary hover:underline">emergency drainage callouts</a> within 60-90 minutes across <a href="/locations/chelmsford/" class="text-primary hover:underline">Chelmsford</a> and Essex. Our team operates around the clock, so help is available whenever you need it, day or night.'
   },
   {
     question: "Do you charge a call-out fee?",
@@ -130,7 +130,7 @@ export const PAGE_FAQS: FAQ[] = [
   },
   {
     question: "What locations do you cover?",
-    answer: 'We provide drainage services throughout <a href="/locations/glasgow/" class="text-primary hover:underline">Manchester</a> and the Greater Manchester, including <a href="/locations/paisley/" class="text-primary hover:underline">Trafford</a>, <a href="/locations/east-kilbride/" class="text-primary hover:underline">Stockport</a>, <a href="/locations/motherwell/" class="text-primary hover:underline">Oldham</a>, Bolton, Bury, Rochdale, Wigan, and Salford. See <a href="/locations/" class="text-primary hover:underline">all locations we cover</a>.'
+    answer: 'We provide drainage services throughout <a href="/locations/chelmsford/" class="text-primary hover:underline">Chelmsford</a> and Essex, including <a href="/locations/witham/" class="text-primary hover:underline">Witham</a>, <a href="/locations/braintree/" class="text-primary hover:underline">Braintree</a>, <a href="/locations/maldon/" class="text-primary hover:underline">Maldon</a>, Brentwood, Billericay, Ingatestone, Great Baddow, and Springfield. See <a href="/locations/" class="text-primary hover:underline">all locations we cover</a>.'
   },
   {
     question: "What payment methods do you accept?",
