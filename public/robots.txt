@@ -44,7 +44,7 @@ Disallow: /status
 Disallow: /_astro/
 
 # Sitemap location
-Sitemap: https://glasgowdrainunblocker.co.uk/sitemap.xml
+Sitemap: https://plumberschelmsford247.co.uk/sitemap.xml
 
 # Host preference (canonical non-www HTTPS)
 Host: https://glasgowdrainunblocker.co.uk
